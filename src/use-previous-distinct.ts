@@ -3,6 +3,9 @@ import { useRef } from 'react';
 import useFirstMount from './use-first-mount';
 import { CompareFunction, strictEquals } from './utils';
 
+/**
+ * Get the previous state or prop based on the comparation with current value.
+ */
 export default function usePreviousDistinct<T>(
   state: T,
   compareFn: CompareFunction<T> = strictEquals,

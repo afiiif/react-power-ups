@@ -2,6 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 
 import { noop } from './utils';
 
+/**
+ * Get debounced value.
+ */
 export default function useDebounce<T>(
   value: T,
   delay: number,

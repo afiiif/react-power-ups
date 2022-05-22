@@ -2,6 +2,9 @@ import { DependencyList, EffectCallback, useEffect } from 'react';
 
 import useFirstMount from './use-first-mount';
 
+/**
+ * Like `useEffect` hook, but skip on first mount.
+ */
 export default function useUpdateEffect(effect: EffectCallback, deps?: DependencyList) {
   const isFirstMount = useFirstMount();
 

@@ -1,5 +1,8 @@
 import { useCallback, useEffect, useRef } from 'react';
 
+/**
+ * Debounces a function.
+ */
 export default function useDebounceFn<T extends unknown[]>(
   fn: (...params: T) => void,
   delay: number,

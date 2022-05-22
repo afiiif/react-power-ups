@@ -20,8 +20,8 @@ yarn add react-power-ups
 
 - [`useFirstMount`](./src/use-first-mount.ts) &mdash; Check if component is just mounted (on first render).
 - [`useUpdateEffect`](./src/use-update-effect.ts) &mdash; Like `useEffect` hook, but skip on first mount.
-- [`usePrevious`](./src/use-previous.ts) &mdash; Get the previous state or prop based on the previous render.
-- [`usePreviousDistinct`](./src/use-previous-distinct.ts) &mdash; Get the previous state or prop based on the previous value.
+- [`usePrevious`](./src/use-previous.ts) &mdash; Get the previous state or prop based on the value from previous render.
+- [`usePreviousDistinct`](./src/use-previous-distinct.ts) &mdash; Get the previous state or prop based on the comparation with current value.
 - [`useToggle`](./src/use-toggle.ts) &mdash; Easily toggle or set a boolean state.
 - [`useDebounce`](./src/use-debounce.ts) &mdash; Get debounced value.
 - [`useDebounceFn`](./src/use-debounce-fn.ts) &mdash; Debounces a function.

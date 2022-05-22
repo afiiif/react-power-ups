@@ -9,6 +9,9 @@ type Props = {
   options?: IntersectionObserverInit;
 };
 
+/**
+ * Tracks an HTML element's intersection.
+ */
 export default function useIntersection<T extends Element = HTMLDivElement>({
   onIntersect = noop,
   onEnter = noop,

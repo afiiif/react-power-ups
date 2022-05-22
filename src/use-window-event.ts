@@ -1,5 +1,8 @@
 import { useEffect, useRef } from 'react';
 
+/**
+ * Add event listener to window.
+ */
 export default function useWindowEvent<T extends keyof WindowEventMap>(
   eventType: T,
   handler: (ev: WindowEventMap[T]) => any,
