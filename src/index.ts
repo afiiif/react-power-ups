@@ -7,3 +7,4 @@ export { default as usePrevious } from './use-previous';
 export { default as usePreviousDistinct } from './use-previous-distinct';
 export { default as useToggle } from './use-toggle';
 export { default as useUpdateEffect } from './use-update-effect';
+export { default as useWindowEvent } from './use-window-event';
