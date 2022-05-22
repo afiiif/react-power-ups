@@ -7,7 +7,16 @@
     "hooks",
     "utilities"
   ],
+  "author": "Muhammad Afifudin",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/afiiif/react-power-ups"
+  },
+  "bugs": {
+    "url": "https://github.com/afiiif/react-power-ups/issues"
+  },
+  "homepage": "https://github.com/afiiif/react-power-ups#readme",
   "main": "lib/index.js",
   "module": "esm/index.js",
   "sideEffects": false,
@@ -27,7 +36,8 @@
     "format:fix": "prettier --write .",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "lint:types": "tsc --noEmit"
+    "lint:types": "tsc --noEmit",
+    "code-check": "yarn format:fix && yarn lint && yarn lint:types"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.0",
