@@ -6,7 +6,6 @@ type Props = {
   onIntersect?: (isIntersecting: boolean, entry?: IntersectionObserverEntry) => void;
   onEnter?: (entry?: IntersectionObserverEntry) => void;
   onLeave?: (entry?: IntersectionObserverEntry) => void;
-  options?: IntersectionObserverInit;
 };
 
 /**
@@ -16,8 +15,8 @@ export default function useIntersection<T extends Element = HTMLDivElement>({
   onIntersect = noop,
   onEnter = noop,
   onLeave = noop,
-  options,
-}: Props) {
+  ...options
+}: Props & IntersectionObserverInit) {
   const ref = useRef<T>(null);
 
   const onIntersectRef = useRef(onIntersect);
@@ -51,7 +50,8 @@ export default function useIntersection<T extends Element = HTMLDivElement>({
       };
     }
     return () => {};
-  }, [options]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [options.root, options.rootMargin, options.threshold]);
 
   return ref;
 }

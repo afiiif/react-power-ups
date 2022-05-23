@@ -11,7 +11,7 @@ export default function useOnScreen<T extends Element = HTMLDivElement>(
 ): [RefObject<T>, boolean | undefined] {
   const [isOnScreen, setIsOnScreen] = useState(initialIsOnScreen);
 
-  const ref = useIntersection<T>({ onIntersect: setIsOnScreen, options });
+  const ref = useIntersection<T>({ onIntersect: setIsOnScreen, ...options });
 
   return [ref, isOnScreen];
 }
