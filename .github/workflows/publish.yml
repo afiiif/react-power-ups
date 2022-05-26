@@ -1,8 +1,8 @@
-name: Code Quality Check & Publish
+name: Quality Check & Publish
 
 on:
   push:
-    branches: [main]
+    branches: [main, beta]
   pull_request:
     types: [opened, synchronize]
 
@@ -30,7 +30,7 @@ jobs:
   publish:
     name: Publish to NPM
     needs: [lint, type-check]
-    if: ${{ github.ref == 'refs/heads/main' }}
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/beta'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
