@@ -28,3 +28,4 @@ yarn add react-power-ups
 - [`useIntersection`](./src/use-intersection.ts) &mdash; Tracks an HTML element's intersection.
 - [`useOnScreen`](./src/use-on-screen.ts) &mdash; Tracks an HTML element's visibility on screen.
 - [`useWindowEvent`](./src/use-window-event.ts) &mdash; Add event listener to window.
+- [`useCountDown`](./src/use-count-down.ts) &mdash; Start, pause, resume, and reset a countdown timer.
