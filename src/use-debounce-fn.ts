@@ -6,7 +6,7 @@ import { useCallback, useEffect, useRef } from 'react';
 export default function useDebounceFn<T extends unknown[]>(
   fn: (...params: T) => void,
   delay: number,
-) {
+): [(...params: T) => void, () => void] {
   const timeout = useRef<ReturnType<typeof setTimeout>>();
   const callback = useRef(fn);
 
