@@ -102,14 +102,17 @@ export default function useCountDown({
     [defaultDuration, interval],
   );
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const actions = useMemo(() => restActions, [defaultDuration, interval]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => cancel, [defaultDuration, interval]);
 
   useEffect(() => {
     if (startOnMount) {
       actions.start();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return [timeLeft, actions];
