@@ -10,6 +10,14 @@ type Props = {
 
 /**
  * Tracks an HTML element's intersection.
+ *
+ * @param options Options.
+ * @param {Function} options.onIntersect Callback fired on enter & leave.
+ * @param {Function} options.onEnter Callback fired on enter.
+ * @param {Function} options.onLeave Callback fired on leave.
+ * @param options.root Intersection observer option.
+ * @param options.rootMargin Intersection observer option.
+ * @param options.threshold Intersection observer option.
  */
 export default function useIntersection<T extends Element = HTMLDivElement>({
   onIntersect = noop,

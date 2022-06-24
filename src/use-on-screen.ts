@@ -4,6 +4,12 @@ import useIntersection from './use-intersection';
 
 /**
  * Tracks an HTML element's visibility on screen.
+ *
+ * @param {boolean} initialIsOnScreen Initial `isOnScreen` state.
+ * @param options Options.
+ * @param options.root Intersection observer option.
+ * @param options.rootMargin Intersection observer option.
+ * @param options.threshold Intersection observer option.
  */
 export default function useOnScreen<T extends Element = HTMLDivElement>(
   initialIsOnScreen?: boolean,

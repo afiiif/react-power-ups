@@ -5,6 +5,9 @@ import { CompareFunction, strictEquals } from './utils';
 
 /**
  * Get the previous state or prop based on the comparation with current value.
+ *
+ * @param state State (or prop).
+ * @param compareFn Function to compare current value with previous value (default strict equal).
  */
 export default function usePreviousDistinct<T>(
   state: T,
