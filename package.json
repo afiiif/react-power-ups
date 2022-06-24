@@ -31,6 +31,7 @@
     "build:cjs": "tsc",
     "build:es": "tsc -m esNext --outDir esm",
     "build": "yarn clean && yarn build:cjs && yarn build:es",
+    "prepublishOnly": "yarn build",
     "clean": "rimraf lib esm",
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
