@@ -33,7 +33,7 @@ yarn add react-power-ups
   Tracks an HTML element's intersection.  
   <small>💡 Common use case: detect if user has reached the bottom of page to load more data (infinite scroll)</small>
 
-- [**`useOnScreen`**](./src/use-on-screen.ts) [![][img-demo]](https://codesandbox.io/s/github/afiiif/react-power-ups-demo?file=/pages/use-on-screen.tsx&initialpath=/use-on-screen)  
+- [**`useInView`**](./src/use-in-view.ts) [![][img-demo]](https://codesandbox.io/s/github/afiiif/react-power-ups-demo?file=/pages/use-in-view.tsx&initialpath=/use-in-view)  
   Tracks an HTML element's visibility on screen.  
   <small>💡 Common use case: display something differently depending on whether an element is visible on screen or not</small>
 

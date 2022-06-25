@@ -3,6 +3,8 @@ import { RefObject, useState } from 'react';
 import useIntersection from './use-intersection';
 
 /**
+ * @deprecated Use `useInview` instead.
+ *
  * Tracks an HTML element's visibility on screen.
  *
  * @param {boolean} initialIsOnScreen Initial `isOnScreen` state.

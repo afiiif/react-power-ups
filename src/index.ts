@@ -2,6 +2,7 @@ export { default as useCountDown } from './use-count-down';
 export { default as useDebounce } from './use-debounce';
 export { default as useDebounceFn } from './use-debounce-fn';
 export { default as useFirstMount } from './use-first-mount';
+export { default as useInView } from './use-in-view';
 export { default as useIntersection } from './use-intersection';
 export { default as useOnScreen } from './use-on-screen';
 export { default as usePrevious } from './use-previous';
