@@ -44,7 +44,7 @@ function useStorage<T>(
 }
 
 /**
- * Manage `localStorage` like using `useState`, SSG/SSR friendly.
+ * Like `useState` but persisted on `localStorage`, SSG/SSR friendly.
  *
  * The state will be `undefined` at first, since browser storage can't be detected on SSG/SSR.
  *
@@ -63,7 +63,7 @@ export function useLocalStorage<T>(key: string) {
 }
 
 /**
- * Manage `sessionStorage` like using `useState`, SSG/SSR friendly.
+ * Like `useState` but persisted on `sessionStorage`, SSG/SSR friendly.
  *
  * The state will be `undefined` at first, since browser storage can't be detected on SSG/SSR.
  *

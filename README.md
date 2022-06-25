@@ -34,7 +34,7 @@ yarn add react-power-ups
   <small>💡 Common use case: detect if user has reached the bottom of page to load more data (infinite scroll)</small>
 
 - [**`useInView`**](./src/use-in-view.ts) [![][img-demo]](https://codesandbox.io/s/github/afiiif/react-power-ups-demo?file=/pages/use-in-view.tsx&initialpath=/use-in-view)  
-  Tracks an HTML element's visibility on screen.  
+  Tracks an HTML element's visibility on screen or a specified element.  
   <small>💡 Common use case: display something differently depending on whether an element is visible on screen or not</small>
 
 - [**`useWindowEvent`**](./src/use-window-event.ts) [![][img-demo]](https://codesandbox.io/s/github/afiiif/react-power-ups-demo?file=/pages/use-window-event.tsx&initialpath=/use-window-event)  
@@ -60,3 +60,11 @@ yarn add react-power-ups
 - [**`usePreviousDistinct`**](./src/use-previous-distinct.ts) [![][img-demo]](https://codesandbox.io/s/github/afiiif/react-power-ups-demo?file=/pages/use-previous-distinct.tsx&initialpath=/use-previous-distinct)  
   Get the previous state or prop based on the comparation with current value.  
   <small>💡 Common use case: when you need the value of the previous state/prop</small>
+
+- [**`useLocalStorage`**](./src/use-local-storage.ts) [![][img-demo]](https://codesandbox.io/s/github/afiiif/react-power-ups-demo?file=/pages/use-local-storage.tsx&initialpath=/use-local-storage)  
+  Like `useState` but persisted on `localStorage`, SSG/SSR friendly.  
+  <small>💡 Common use case: manage theme, language, etc.</small>
+
+- [**`useSessionStorage`**](./src/use-session-storage.ts) [![][img-demo]](https://codesandbox.io/s/github/afiiif/react-power-ups-demo?file=/pages/use-session-storage.tsx&initialpath=/use-session-storage)  
+  Like `useState` but persisted on `sessionStorage`, SSG/SSR friendly.  
+  <small>💡 Common use case: manage temporary value</small>
