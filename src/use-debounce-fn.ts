@@ -12,13 +12,18 @@ export default function useDebounceFn<T extends unknown[]>(
   delay: number,
 ): [(...params: T) => void, () => void] {
   const timeout = useRef<ReturnType<typeof setTimeout>>();
-  const callback = useRef(fn);
+
+  const fnRef = useRef(fn);
+
+  useEffect(() => {
+    fnRef.current = fn;
+  }, [fn]);
 
   const debouncedFn = useCallback(
     (...params: T) => {
       clearTimeout(timeout.current);
       timeout.current = setTimeout(() => {
-        callback.current(...params);
+        fnRef.current(...params);
       }, delay);
     },
     [delay],
@@ -27,10 +32,6 @@ export default function useDebounceFn<T extends unknown[]>(
   const clear = useCallback(() => {
     clearTimeout(timeout.current);
   }, []);
-
-  useEffect(() => {
-    callback.current = fn;
-  }, [fn]);
 
   return [debouncedFn, clear];
 }

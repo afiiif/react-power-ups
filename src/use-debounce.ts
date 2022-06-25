@@ -16,22 +16,23 @@ export default function useDebounce<T>(
   callbackFn: (value: T) => void = noop,
 ): T {
   const [debouncedValue, setDebouncedValue] = useState(value);
-  const callback = useRef(callbackFn);
+
+  const callbackFnRef = useRef(callbackFn);
+
+  useEffect(() => {
+    callbackFnRef.current = callbackFn;
+  }, [callbackFn]);
 
   useEffect(() => {
     const handler = setTimeout(() => {
       setDebouncedValue(value);
-      callback.current(value);
+      callbackFnRef.current(value);
     }, delay);
 
     return () => {
       clearTimeout(handler);
     };
   }, [value, delay]);
-
-  useEffect(() => {
-    callback.current = callbackFn;
-  }, [callbackFn]);
 
   return debouncedValue;
 }
