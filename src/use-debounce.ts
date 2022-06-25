@@ -5,6 +5,7 @@ import { noop } from './utils';
 /**
  * Get debounced value.
  *
+ * ---
  * @param value Value to be debounced.
  * @param {number} delay Delay in milliseconds.
  * @param {Function} callbackFn Callback function after debounced.

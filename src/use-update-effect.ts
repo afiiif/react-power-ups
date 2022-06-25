@@ -5,6 +5,7 @@ import useFirstMount from './use-first-mount';
 /**
  * Like `useEffect` hook, but skip on first mount.
  *
+ * ---
  * @param {Function} effect Effect callback.
  * @param {Array} deps Dependency array.
  */

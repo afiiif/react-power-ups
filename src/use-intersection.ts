@@ -11,6 +11,7 @@ type Props = {
 /**
  * Tracks an HTML element's intersection.
  *
+ * ---
  * @param options Options.
  * @param {Function} options.onIntersect Callback fired on enter & leave.
  * @param {Function} options.onEnter Callback fired on enter.

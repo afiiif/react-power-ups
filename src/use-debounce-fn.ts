@@ -3,6 +3,7 @@ import { useCallback, useEffect, useRef } from 'react';
 /**
  * Debounces a function.
  *
+ * ---
  * @param {Function} fn Function to be debounced.
  * @param {number} delay Delay in milliseconds.
  */
