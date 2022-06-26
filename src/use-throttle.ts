@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
+import useUpdateEffect from './use-update-effect';
 import { noop } from './utils';
 
 /**
@@ -26,7 +27,7 @@ export default function useThrottle<T>(
     callbackFnRef.current = callbackFn;
   }, [callbackFn]);
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     nextValue.current = value;
     if (!timeout.current) {
       timeout.current = setTimeout(() => {

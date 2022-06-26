@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
+import useUpdateEffect from './use-update-effect';
 import { noop } from './utils';
 
 /**
@@ -23,7 +24,7 @@ export default function useDebounce<T>(
     callbackFnRef.current = callbackFn;
   }, [callbackFn]);
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     const handler = setTimeout(() => {
       setDebouncedValue(value);
       callbackFnRef.current(value);
