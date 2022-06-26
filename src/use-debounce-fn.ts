@@ -11,7 +11,7 @@ export default function useDebounceFn<T extends unknown[]>(
   fn: (...params: T) => void,
   delay: number,
 ): [(...params: T) => void, () => void] {
-  const timeout = useRef<ReturnType<typeof setTimeout>>();
+  const timeout = useRef<NodeJS.Timeout>();
 
   const fnRef = useRef(fn);
 
