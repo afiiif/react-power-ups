@@ -41,6 +41,7 @@ export default function useThrottle<T>(
   useEffect(() => {
     return () => {
       clearTimeout(timeout.current);
+      timeout.current = undefined;
     };
   }, []);
 

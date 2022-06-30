@@ -35,6 +35,7 @@ export default function useThrottleFn<T extends unknown[]>(
 
   const clear = useCallback(() => {
     clearTimeout(timeout.current);
+    timeout.current = undefined;
   }, []);
 
   return [throttledFn, clear];
