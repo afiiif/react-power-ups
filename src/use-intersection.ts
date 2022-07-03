@@ -6,6 +6,7 @@ type Props = {
   onIntersect?: (isIntersecting: boolean, entry?: IntersectionObserverEntry) => void;
   onEnter?: (entry?: IntersectionObserverEntry) => void;
   onLeave?: (entry?: IntersectionObserverEntry) => void;
+  enabled?: boolean;
 };
 
 /**
@@ -16,6 +17,7 @@ type Props = {
  * @param {Function} options.onIntersect Callback fired on enter & leave.
  * @param {Function} options.onEnter Callback fired on enter.
  * @param {Function} options.onLeave Callback fired on leave.
+ * @param {boolean} [options.enabled=true] Enable intersection observer (default `true`).
  * @param options.root Intersection observer option.
  * @param options.rootMargin Intersection observer option.
  * @param options.threshold Intersection observer option.
@@ -24,6 +26,7 @@ export default function useIntersection<T extends Element = HTMLDivElement>({
   onIntersect = noop,
   onEnter = noop,
   onLeave = noop,
+  enabled = true,
   ...options
 }: Props & IntersectionObserverInit) {
   const ref = useRef<T>(null);
@@ -45,7 +48,7 @@ export default function useIntersection<T extends Element = HTMLDivElement>({
   }, [onLeave]);
 
   useEffect(() => {
-    if (ref.current && typeof IntersectionObserver === 'function') {
+    if (enabled && ref.current && typeof IntersectionObserver === 'function') {
       const observer = new IntersectionObserver(([entry]) => {
         onIntersectRef.current(entry.isIntersecting, entry);
         if (entry.isIntersecting) onEnterRef.current(entry);
@@ -60,7 +63,7 @@ export default function useIntersection<T extends Element = HTMLDivElement>({
     }
     return () => {};
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [options.root, options.rootMargin, options.threshold]);
+  }, [enabled, options.root, options.rootMargin, options.threshold]);
 
   return ref;
 }
