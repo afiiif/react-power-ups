@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 
 import { noop } from './utils';
 
-type Props = {
+export type Props = {
   onIntersect?: (isIntersecting: boolean, entry?: IntersectionObserverEntry) => void;
   onEnter?: (entry?: IntersectionObserverEntry) => void;
   onLeave?: (entry?: IntersectionObserverEntry) => void;
@@ -14,13 +14,13 @@ type Props = {
  *
  * ---
  * @param options Options.
+ * @param options.root Intersection observer option.
+ * @param options.rootMargin Intersection observer option.
+ * @param options.threshold Intersection observer option.
  * @param {Function} options.onIntersect Callback fired on enter & leave.
  * @param {Function} options.onEnter Callback fired on enter.
  * @param {Function} options.onLeave Callback fired on leave.
  * @param {boolean} [options.enabled=true] Enable intersection observer (default `true`).
- * @param options.root Intersection observer option.
- * @param options.rootMargin Intersection observer option.
- * @param options.threshold Intersection observer option.
  */
 export default function useIntersection<T extends Element = HTMLDivElement>({
   onIntersect = noop,
