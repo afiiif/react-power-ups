@@ -1,84 +1,66 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
-import useFirstMount from './use-first-mount';
+import useIsomorphicLayoutEffect from './use-isomorphic-layout-effect';
 import { isBrowser } from './utils';
 
+type Options<T> = {
+  key: string;
+  initialValue: T;
+  validator?: (data: any) => boolean;
+};
+
 function useStorage<T>(
-  key: string,
-  storage?: Storage | false,
-): [T | null | undefined, Dispatch<SetStateAction<T | null | undefined>>] {
-  const [value, setValue] = useState<T | null>();
+  storage: Storage | false,
+  options: Options<T>,
+): [T, Dispatch<SetStateAction<T>>] {
+  const { key, initialValue, validator } = options;
 
-  if (!storage) {
-    return [value, setValue];
-  }
+  const [value, setValue] = useState<T>(initialValue);
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const isFirstMount = useFirstMount();
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  useEffect(() => {
-    if (isFirstMount) {
-      const savedValue = storage.getItem(key);
-      if (savedValue === null) {
-        setValue(null);
-      } else {
-        try {
-          setValue(JSON.parse(savedValue));
-        } catch {
-          setValue(null);
-        }
+  useIsomorphicLayoutEffect(() => {
+    try {
+      // @ts-ignore
+      const savedValue = JSON.parse((storage as Storage).getItem(key));
+      if (typeof validator !== 'function' || validator(savedValue)) {
+        setValue(savedValue);
       }
-    } else {
-      if (value === undefined) {
-        setValue(null);
-      } else if (value === null) {
-        storage.removeItem(key);
-      } else {
-        storage.setItem(key, JSON.stringify(value));
-      }
+    } catch {
+      localStorage.removeItem(key);
     }
-  }, [key, value, isFirstMount, storage]);
+  }, []);
+
+  useEffect(() => {
+    (storage as Storage).setItem(key, JSON.stringify(value));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value]);
 
   return [value, setValue];
 }
 
 /**
- * Like `useState` but persisted on `localStorage`, SSG/SSR friendly.
- *
- * The state will be `undefined` at first, since browser storage can't be detected on SSG/SSR.
- *
- * At client side, the state will be updated:
- * - If there is no stored value, the state will be `null`.
- * - If there is an invalid JSON-stringified string in storage, the state will be `null` too.
- * - If there is a valid JSON-stringified string in storage, the state will be updated to the stored value (JSON parsed).
- *
- * To remove the stored value, set state to `null`.
+ * Like `useState` but persisted on `localStorage`, SSG/SSR-friendly.
  *
  * ---
  *
- * @param key localStorage key.
+ * @param options Options.
+ * @param options.key localStorage key.
+ * @param options.initialValue Initial value of the state.
+ * @param options.validator Function to validate the saved data.
  */
-export function useLocalStorage<T>(key: string) {
-  return useStorage<T>(key, isBrowser && localStorage);
+export function useLocalStorage<T>({ key, initialValue, validator }: Options<T>) {
+  return useStorage<T>(isBrowser && localStorage, { key, initialValue, validator });
 }
 
 /**
- * Like `useState` but persisted on `sessionStorage`, SSG/SSR friendly.
- *
- * The state will be `undefined` at first, since browser storage can't be detected on SSG/SSR.
- *
- * At client side, the state will be updated:
- * - If there is no stored value, the state will be `null`.
- * - If there is an invalid JSON-stringified string in storage, the state will be `null` too.
- * - If there is a valid JSON-stringified string in storage, the state will be updated to the stored value (JSON parsed).
- *
- * To remove the stored value, set state to `null`.
+ * Like `useState` but persisted on `sessionStorage`, SSG/SSR-friendly.
  *
  * ---
  *
- * @param key sessionStorage key.
+ * @param options Options.
+ * @param options.key sessionStorage key.
+ * @param options.initialValue Initial value of the state.
+ * @param options.validator Function to validate the saved data.
  */
-export function useSessionStorage<T>(key: string) {
-  return useStorage<T>(key, isBrowser && sessionStorage);
+export function useSessionStorage<T>({ key, initialValue, validator }: Options<T>) {
+  return useStorage<T>(isBrowser && sessionStorage, { key, initialValue, validator });
 }
