@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef } from 'react';
  * Throttles a function.
  *
  * ---
+ *
  * @param {Function} fn Function to be throttled.
  * @param {number} delay Delay in milliseconds.
  */

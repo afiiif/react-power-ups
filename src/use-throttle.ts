@@ -7,6 +7,7 @@ import { noop } from './utils';
  * Get throttled value.
  *
  * ---
+ *
  * @param value Value to be throttled.
  * @param {number} delay Delay in milliseconds.
  * @param {Function} callbackFn Callback function after throttled.

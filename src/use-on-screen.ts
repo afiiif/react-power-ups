@@ -8,6 +8,7 @@ import useIntersection from './use-intersection';
  * Tracks an HTML element's visibility on screen.
  *
  * ---
+ *
  * @param {boolean} initialIsOnScreen Initial `isOnScreen` state.
  * @param options Options.
  * @param options.root Intersection observer option.

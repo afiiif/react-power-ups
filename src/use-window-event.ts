@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
  * Add event listener to window.
  *
  * ---
+ *
  * @param {string} eventType Window event type (e.g. 'click', 'keyup').
  * @param {Function} handler Handler function.
  */

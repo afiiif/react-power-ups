@@ -13,6 +13,7 @@ export type Props = {
  * Tracks an HTML element's intersection.
  *
  * ---
+ *
  * @param options Options.
  * @param options.root Intersection observer option.
  * @param options.rootMargin Intersection observer option.

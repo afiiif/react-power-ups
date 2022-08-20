@@ -56,6 +56,7 @@ function useStorage<T>(
  * To remove the stored value, set state to `null`.
  *
  * ---
+ *
  * @param key localStorage key.
  */
 export function useLocalStorage<T>(key: string) {
@@ -75,6 +76,7 @@ export function useLocalStorage<T>(key: string) {
  * To remove the stored value, set state to `null`.
  *
  * ---
+ *
  * @param key sessionStorage key.
  */
 export function useSessionStorage<T>(key: string) {

@@ -91,6 +91,7 @@ type Actions = {
  * Start, pause, resume, and reset a countdown timer.
  *
  * ---
+ *
  * @param options Countdown options.
  * @param {number} [options.defaultDuration=60000] Default duration in milliseconds (default 60s).
  * @param {number} [options.interval=1000] Interval in milliseconds (default 1s).
