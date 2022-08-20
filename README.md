@@ -43,6 +43,9 @@ yarn add react-power-ups
   Like `useEffect` hook, but skip on first mount.  
   <sup>💡 Common use case: do something when a state updated</sup>
 
+- [`useIsomorphicLayoutEffect`](./src/use-isomorphic-layout-effect.ts)  
+  Same as `useLayoutEffect`, but will not show warning in Next.js.
+
 ### Event 🗓
 
 - [`useIntersection`](./src/use-intersection.ts) [![][img-demo]](https://codesandbox.io/s/github/afiiif/react-power-ups-demo?file=/pages/use-intersection.tsx&initialpath=/use-intersection)  
@@ -78,9 +81,9 @@ yarn add react-power-ups
 ### Storage 🗄
 
 - [`useLocalStorage`](./src/use-storage.ts) [![][img-demo]](https://codesandbox.io/s/github/afiiif/react-power-ups-demo?file=/pages/use-local-storage.tsx&initialpath=/use-local-storage)  
-  Like `useState` but persisted on `localStorage`, SSG/SSR friendly.  
+  Like `useState` but persisted on `localStorage`, SSG/SSR-friendly.  
   <sup>💡 Common use case: manage theme, language, etc.</sup>
 
 - [`useSessionStorage`](./src/use-storage.ts) [![][img-demo]](https://codesandbox.io/s/github/afiiif/react-power-ups-demo?file=/pages/use-session-storage.tsx&initialpath=/use-session-storage)  
-  Like `useState` but persisted on `sessionStorage`, SSG/SSR friendly.  
+  Like `useState` but persisted on `sessionStorage`, SSG/SSR-friendly.  
   <sup>💡 Common use case: manage temporary value</sup>
