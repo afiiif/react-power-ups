@@ -4,6 +4,7 @@ export { default as useDebounceFn } from './use-debounce-fn';
 export { default as useFirstMount } from './use-first-mount';
 export { default as useInView } from './use-in-view';
 export { default as useIntersection } from './use-intersection';
+export { default as useIsomorphicLayoutEffect } from './use-isomorphic-layout-effect';
 export { default as useOnScreen } from './use-on-screen';
 export { default as usePrevious } from './use-previous';
 export { default as usePreviousDistinct } from './use-previous-distinct';
