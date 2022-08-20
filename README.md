@@ -77,10 +77,10 @@ yarn add react-power-ups
 
 ### Storage 🗄
 
-- [`useLocalStorage`](./src/use-local-storage.ts) [![][img-demo]](https://codesandbox.io/s/github/afiiif/react-power-ups-demo?file=/pages/use-local-storage.tsx&initialpath=/use-local-storage)  
+- [`useLocalStorage`](./src/use-storage.ts) [![][img-demo]](https://codesandbox.io/s/github/afiiif/react-power-ups-demo?file=/pages/use-local-storage.tsx&initialpath=/use-local-storage)  
   Like `useState` but persisted on `localStorage`, SSG/SSR friendly.  
   <sup>💡 Common use case: manage theme, language, etc.</sup>
 
-- [`useSessionStorage`](./src/use-session-storage.ts) [![][img-demo]](https://codesandbox.io/s/github/afiiif/react-power-ups-demo?file=/pages/use-session-storage.tsx&initialpath=/use-session-storage)  
+- [`useSessionStorage`](./src/use-storage.ts) [![][img-demo]](https://codesandbox.io/s/github/afiiif/react-power-ups-demo?file=/pages/use-session-storage.tsx&initialpath=/use-session-storage)  
   Like `useState` but persisted on `sessionStorage`, SSG/SSR friendly.  
   <sup>💡 Common use case: manage temporary value</sup>
