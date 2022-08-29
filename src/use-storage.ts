@@ -1,6 +1,7 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 
 import useIsomorphicLayoutEffect from './use-isomorphic-layout-effect';
+import useUpdateEffect from './use-update-effect';
 import { isBrowser } from './utils';
 
 type Options<T> = {
@@ -29,7 +30,7 @@ function useStorage<T>(
     }
   }, []);
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     (storage as Storage).setItem(key, JSON.stringify(value));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
