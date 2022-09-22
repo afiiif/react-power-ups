@@ -19,14 +19,16 @@ function useStorage<T>(
   const [value, setValue] = useState<T>(initialValue);
 
   useIsomorphicLayoutEffect(() => {
-    try {
-      // @ts-ignore
-      const savedValue = JSON.parse((storage as Storage).getItem(key));
-      if (typeof validator !== 'function' || validator(savedValue)) {
-        setValue(savedValue);
+    const storageData = (storage as Storage).getItem(key);
+    if (storageData) {
+      try {
+        const parsedValue = JSON.parse(storageData);
+        if (typeof validator !== 'function' || validator(parsedValue)) {
+          setValue(parsedValue);
+        }
+      } catch {
+        localStorage.removeItem(key);
       }
-    } catch {
-      localStorage.removeItem(key);
     }
   }, []);
 
