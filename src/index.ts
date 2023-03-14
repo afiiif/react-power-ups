@@ -1,8 +1,13 @@
+export type {
+  Actions as UseCountDownActions,
+  Options as UseCountDownOptions,
+} from './use-count-down';
 export { default as useCountDown } from './use-count-down';
 export { default as useDebounce } from './use-debounce';
 export { default as useDebounceFn } from './use-debounce-fn';
 export { default as useFirstMount } from './use-first-mount';
 export { default as useInView } from './use-in-view';
+export type { Props as UseIntersectionProps } from './use-intersection';
 export { default as useIntersection } from './use-intersection';
 export { default as useIsomorphicLayoutEffect } from './use-isomorphic-layout-effect';
 export { default as useLocalStorage } from './use-local-storage';

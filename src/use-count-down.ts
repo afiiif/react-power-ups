@@ -74,13 +74,13 @@ function countDown({ defaultDuration, interval, callback }: CountDownOptions) {
   return { start, pause, resume, reset, cancel };
 }
 
-type Options = {
+export type Options = {
   defaultDuration?: number;
   interval?: number;
   startOnMount?: boolean;
 };
 
-type Actions = {
+export type Actions = {
   start: (duration?: number) => void;
   pause: () => void;
   resume: () => void;
