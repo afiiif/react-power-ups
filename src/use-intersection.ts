@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 
 import { noop } from './utils';
 
-export type Props = {
+export type Props = IntersectionObserverInit & {
   onIntersect?: (isIntersecting: boolean, entry?: IntersectionObserverEntry) => void;
   onEnter?: (entry?: IntersectionObserverEntry) => void;
   onLeave?: (entry?: IntersectionObserverEntry) => void;
@@ -29,8 +29,8 @@ export default function useIntersection<T extends Element = HTMLDivElement>({
   onLeave = noop,
   enabled = true,
   ...options
-}: Props & IntersectionObserverInit) {
-  const ref = useRef<T>(null);
+}: Props) {
+  const ref = useRef<T | null>(null);
 
   const onIntersectRef = useRef(onIntersect);
   const onEnterRef = useRef(onEnter);
@@ -49,20 +49,21 @@ export default function useIntersection<T extends Element = HTMLDivElement>({
   }, [onLeave]);
 
   useEffect(() => {
-    if (enabled && ref.current && typeof IntersectionObserver === 'function') {
-      const observer = new IntersectionObserver(([entry]) => {
-        onIntersectRef.current(entry.isIntersecting, entry);
-        if (entry.isIntersecting) onEnterRef.current(entry);
-        else onLeaveRef.current(entry);
-      }, options);
-
-      observer.observe(ref.current);
-
-      return () => {
-        observer.disconnect();
-      };
+    if (!enabled || !ref.current || typeof IntersectionObserver !== 'function') {
+      return;
     }
-    return () => {};
+
+    const observer = new IntersectionObserver(([entry]) => {
+      onIntersectRef.current(entry.isIntersecting, entry);
+      if (entry.isIntersecting) onEnterRef.current(entry);
+      else onLeaveRef.current(entry);
+    }, options);
+
+    observer.observe(ref.current);
+
+    return () => {
+      observer.disconnect();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [enabled, options.root, options.rootMargin, options.threshold]);
 

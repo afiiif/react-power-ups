@@ -1,4 +1,4 @@
-import { RefObject, useCallback, useState } from 'react';
+import { MutableRefObject, useCallback, useState } from 'react';
 
 import useIntersection, { Props } from './use-intersection';
 import { noop } from './utils';
@@ -21,7 +21,7 @@ import { noop } from './utils';
 export default function useInView<T extends Element = HTMLDivElement>(
   initialIsInView?: boolean,
   options: IntersectionObserverInit & Props = {},
-): [RefObject<T>, boolean | undefined] {
+): [MutableRefObject<T | null>, boolean | undefined] {
   const { onIntersect = noop, ...restOptions } = options;
 
   const [isInView, setIsInView] = useState(initialIsInView);
