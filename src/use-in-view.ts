@@ -20,7 +20,7 @@ import { noop } from './utils';
  */
 export default function useInView<T extends Element = HTMLDivElement>(
   initialIsInView?: boolean,
-  options: IntersectionObserverInit & Props = {},
+  options: Props = {},
 ): [MutableRefObject<T | null>, boolean | undefined] {
   const { onIntersect = noop, ...restOptions } = options;
 
