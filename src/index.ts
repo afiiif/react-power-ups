@@ -2,7 +2,7 @@ export type {
   Actions as UseCountDownActions,
   Options as UseCountDownOptions,
 } from './use-count-down';
-export { default as useCountDown } from './use-count-down';
+export { countDown, default as useCountDown } from './use-count-down';
 export { default as useDebounce } from './use-debounce';
 export { default as useDebounceFn } from './use-debounce-fn';
 export { default as useFirstMount } from './use-first-mount';

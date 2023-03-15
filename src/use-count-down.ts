@@ -6,7 +6,7 @@ type CountDownOptions = {
   callback: Dispatch<SetStateAction<number>>;
 };
 
-function countDown({ defaultDuration, interval, callback }: CountDownOptions) {
+export function countDown({ defaultDuration, interval, callback }: CountDownOptions) {
   let duration: number;
   let startTime: number | null = null;
   let timeLeft: number;
