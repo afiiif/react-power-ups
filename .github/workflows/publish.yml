@@ -39,7 +39,7 @@ jobs:
 
   publish:
     name: Publish to NPM
-    needs: [lint, type-check]
+    needs: [lint, type-check, test]
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/beta'
     runs-on: ubuntu-latest
     steps:
