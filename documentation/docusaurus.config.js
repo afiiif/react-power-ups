@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'React Power-Ups',
   tagline: 'React Power-Ups are cool',
-  favicon: 'img/favicon.ico',
+  favicon: 'https://em-content.zobj.net/thumbs/240/whatsapp/326/glowing-star_1f31f.png',
 
   // Set the production url of your site here
   url: 'https://your-docusaurus-test-site.com',
@@ -59,7 +59,7 @@ const config = {
         title: 'React Power-Ups',
         logo: {
           alt: 'React Power-Ups Logo',
-          src: 'img/logo.svg',
+          src: 'https://em-content.zobj.net/thumbs/240/whatsapp/326/glowing-star_1f31f.png',
         },
         items: [
           {
@@ -77,7 +77,21 @@ const config = {
       },
       footer: {
         style: 'dark',
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        links: [
+          {
+            title: `Copyright © ${new Date().getFullYear()} React Power-Ups. Built with Docusaurus.`,
+            items: [
+              {
+                label: 'NPM',
+                href: 'https://www.npmjs.com/package/react-power-ups',
+              },
+              {
+                label: 'GitHub',
+                href: 'https://github.com/afiiif/react-power-ups',
+              },
+            ],
+          },
+        ],
       },
       prism: {
         theme: lightCodeTheme,
