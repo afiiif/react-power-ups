@@ -71,11 +71,17 @@
   }
 }
 
+.tabs {
+  border-bottom: 1px solid var(--ifm-color-emphasis-300);
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+
 .custom-sidebar-category {
-  border-top: 1px solid var(--ifm-color-gray-300);
+  border-top: 1px solid var(--ifm-color-emphasis-300);
   margin: 0.75rem 0.75rem 0;
   padding-top: 0.75rem;
-  color: var(--ifm-color-gray-600);
+  color: var(--ifm-color-emphasis-600);
   text-transform: uppercase;
   letter-spacing: 0.1rem;
   font-size: 0.875rem;
@@ -88,4 +94,18 @@
     .menu_node_modules-\@docusaurus-theme-classic-lib-theme-DocSidebar-Desktop-Content-styles-module {
     padding: 0.5rem;
   }
+}
+
+hr.custom-hr {
+  @apply mt-14 border-t border-t-[--ifm-hr-background-color] border-dashed bg-transparent;
+}
+
+.custom-browser-window + .tabs-container {
+  margin-bottom: 3.5rem;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+
+.btn {
+  @apply px-4 py-2 bg-slate-500 text-white border-none rounded-lg text-base;
 }

@@ -1,0 +1,154 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import Param from '@site/src/components/param';
+import BrowserWindow from '@site/src/components/browser-window';
+
+import { DemoPassword, DemoModal } from '@site/src/examples/use-toggle';
+
+# useToggle
+
+Easily toggle or set a boolean state.
+
+<hr className="custom-hr" />
+
+## API
+
+```js
+const [state, toggleState] = useToggle(initialValue);
+```
+
+### Options
+
+- <Param name="initialValue" type="boolean" isRequired={false} />
+
+  - Defaults to `false`
+  - The initial value of the boolean state
+
+### Returns
+
+- <Param name="state" type="boolean" />
+
+  - The boolean state
+
+- <Param name="toggleState" type="(nextValue?: any) => void" />
+
+  - A function to toggle the state, or to set the state to true/false
+
+<hr className="custom-hr" />
+
+## Examples
+
+### Show/Hide Password
+
+<BrowserWindow>
+  <DemoPassword />
+</BrowserWindow>
+
+<Tabs>
+<TabItem value="JS" label="JS">
+
+```jsx
+import { useToggle } from 'react-power-ups';
+
+function DemoPassword() {
+  const [isShowPassword, toggleShowPassword] = useToggle(true);
+
+  return (
+    <>
+      <input type={isShowPassword ? 'text' : 'password'} defaultValue="abc123" />
+
+      {/* Just toggle from previous state */}
+      <button onClick={toggleShowPassword}>{isShowPassword ? 'Hide' : 'Show'} Password</button>
+
+      {/* If you want to set to specific value */}
+      {/* <button onClick={() => toggleShowPassword(true)}>Show Password</button> */}
+      {/* <button onClick={() => toggleShowPassword(false)}>Hide Password</button> */}
+    </>
+  );
+}
+```
+
+</TabItem>
+<TabItem value="TS" label="TS" default>
+
+```jsx
+import { useToggle } from 'react-power-ups';
+
+function DemoPassword() {
+  const [isShowPassword, toggleShowPassword] = useToggle(true);
+
+  return (
+    <>
+      <input type={isShowPassword ? 'text' : 'password'} defaultValue="abc123" />
+
+      {/* Just toggle from previous state */}
+      <button onClick={toggleShowPassword}>{isShowPassword ? 'Hide' : 'Show'} Password</button>
+
+      {/* If you want to set to specific value */}
+      {/* <button onClick={() => toggleShowPassword(true)}>Show Password</button> */}
+      {/* <button onClick={() => toggleShowPassword(false)}>Hide Password</button> */}
+    </>
+  );
+}
+```
+
+</TabItem>
+</Tabs>
+
+### Show/Hide Modal
+
+<BrowserWindow>
+  <DemoModal />
+</BrowserWindow>
+
+<Tabs>
+<TabItem value="JS" label="JS">
+
+```jsx
+import { useToggle } from 'react-power-ups';
+
+function DemoModal() {
+  const [isOpen, toggleModal] = useToggle();
+
+  return (
+    <>
+      <button onClick={toggleModal}>Open modal</button>
+
+      <div className={`modal-overlay ${isOpen ? 'block' : 'hidden'}`}>
+        <div className="modal">
+          <div>Hello 👋</div>
+          <button onClick={toggleModal}>Close</button>
+        </div>
+      </div>
+    </>
+  );
+}
+```
+
+</TabItem>
+<TabItem value="TS" label="TS" default>
+
+```jsx
+import { useToggle } from 'react-power-ups';
+
+function DemoModal() {
+  const [isOpen, toggleModal] = useToggle();
+
+  return (
+    <>
+      <button onClick={toggleModal}>Open modal</button>
+
+      <div className={`modal-overlay ${isOpen ? 'block' : 'hidden'}`}>
+        <div className="modal">
+          <div>Hello 👋</div>
+          <button onClick={toggleModal}>Close</button>
+        </div>
+      </div>
+    </>
+  );
+}
+```
+
+</TabItem>
+</Tabs>

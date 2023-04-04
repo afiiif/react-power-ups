@@ -6196,6 +6196,11 @@ react-loadable-ssr-addon-v5-slorber@^1.0.1:
   dependencies:
     "@babel/runtime" "^7.10.3"
 
+react-power-ups@^3.0.0-beta.4:
+  version "3.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/react-power-ups/-/react-power-ups-3.0.0-beta.4.tgz#1d749132a987064a276b9c8c1288966429e62aeb"
+  integrity sha512-DNJ5FTjrf3GdHFFw1Kvd7rmKoQwxW4+vCYW4WlUZ3YBlTXjZ2ZqIsltKQZmS7hGMyOy1jFbAX8B45yfMyPdtIw==
+
 react-router-config@^5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/react-router-config/-/react-router-config-5.1.1.tgz#0f4263d1a80c6b2dc7b9c1902c9526478194a988"
