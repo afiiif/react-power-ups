@@ -6,7 +6,7 @@ const toggleReducer = (state: boolean, nextValue?: any) =>
 /**
  * Easily toggle or set a boolean state.
  *
- * ---
+ * •
  *
  * @param {boolean} [initialValue=false] Initial state (default `false`).
  */

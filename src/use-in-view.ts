@@ -6,7 +6,7 @@ import { noop } from './utils';
 /**
  * Tracks an HTML element's visibility in viewport.
  *
- * ---
+ * •
  *
  * @param {boolean} initialIsInView Initial `isInView` state.
  * @param options Options.

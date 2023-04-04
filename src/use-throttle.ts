@@ -6,7 +6,7 @@ import { noop } from './utils';
 /**
  * Get throttled value.
  *
- * ---
+ * •
  *
  * @param value Value to be throttled.
  * @param {number} delay Delay in milliseconds.

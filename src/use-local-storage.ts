@@ -19,7 +19,7 @@ type Options<TData, TFallback = TData> = {
  *
  * Enhanced with window storage event.
  *
- * ---
+ * •
  *
  * @param options Options.
  * @param options.key localStorage key.

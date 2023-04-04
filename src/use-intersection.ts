@@ -12,7 +12,7 @@ export type Props = IntersectionObserverInit & {
 /**
  * Tracks an HTML element's intersection.
  *
- * ---
+ * •
  *
  * @param options Options.
  * @param options.root Intersection observer option.

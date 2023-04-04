@@ -16,7 +16,7 @@ type Options<TData, TFallback = TData> = {
  *
  * SSG/SSR-friendly.
  *
- * ---
+ * •
  *
  * @param options Options.
  * @param options.key sessionStorage key.

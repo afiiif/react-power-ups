@@ -90,7 +90,7 @@ export type Actions = {
 /**
  * Start, pause, resume, and reset a countdown timer.
  *
- * ---
+ * •
  *
  * @param options Countdown options.
  * @param {number} [options.defaultDuration=60000] Default duration in milliseconds (default 60s).
