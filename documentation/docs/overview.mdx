@@ -1,0 +1,219 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Overview
+
+React Power-Ups is a collection of React hooks designed to make common tasks in React development easier and more efficient. While the hooks themselves are **simple**, their purpose is to **save time and effort** for developers. **Rather than having to write the same hooks repeatedly** across multiple projects, developers can easily import the hooks they need from this package and get to work right away.
+
+This package was built using **TypeScript**, which provides type-checking and improves the overall development experience. TypeScript catches errors early on and provides **autocomplete** and **documentation**, making it easier to maintain and understand the codebase.
+
+---
+
+## Key Features
+
+⚖️ **Lightweight**: Only 6.3 kB (minified size)
+
+🌳 **Tree-Shakeable**: Remove unused code from your production builds
+
+🛡 **TypeScript**: Ensuring type safety and easy integration with your TypeScript projects
+
+🌐 **SSR support**: You can use it with confidence in your server-rendered React applications
+
+📱 **Cross-Platform**: Can be used in **React Native** too
+
+💡 **Real-World Examples**: Our documentation includes real-world examples of how to use our hooks in various scenarios, helping you get up and running quickly and easily
+
+---
+
+## Getting Started
+
+<Tabs>
+<TabItem value="npm" label="npm">
+
+```bash
+npm i react-power-ups
+```
+
+</TabItem>
+<TabItem value="yarn" label="yarn" default>
+
+```bash
+yarn add react-power-ups
+```
+
+</TabItem>
+<TabItem value="pnpm" label="pnpm">
+
+```bash
+pnpm i react-power-ups
+```
+
+</TabItem>
+</Tabs>
+
+---
+
+export const HookList = ({ items }) => (
+  <ul className="list-none pl-0">
+    {items.map(({ name, href, desc, usecase }) => {
+      return (
+        <li key={name} className="mb-5">
+          <a
+            href={`/docs/${href}`}
+            className="block hover:no-underline shadow-md border border-solid border-[--ifm-color-gray-200] rounded-lg hover:border-[--ifm-color-primary] relative left-0 hover:left-3 transition-all overflow-hidden group"
+          >
+            <h4 className="p-4 pb-0 mb-1 text-lg text-[--ifm-color-primary-darker]">{name}</h4>
+            <div
+              className="px-4 pb-3 text-[--ifm-font-color-base]"
+              dangerouslySetInnerHTML={{ __html: desc }}
+            />
+            {usecase && (
+              <p className="mb-0 px-4 py-2 text-[--ifm-color-gray-700] bg-[--ifm-color-gray-100] text-sm group-hover:bg-[--ifm-color-primary] group-hover:text-[--ifm-color-secondary] dark:group-hover:text-[--ifm-color-gray-800]">
+                💡 {usecase}
+              </p>
+            )}
+          </a>
+        </li>
+      );
+    })}
+  </ul>
+);
+
+## Hook List
+
+[img-demo]: https://img.shields.io/badge/demo-%20%20%20%F0%9F%9A%80-green.svg
+
+### State 🚥
+
+<HookList
+  items={[
+    {
+      name: 'useToggle',
+      href: 'use-toggle',
+      desc: 'Easily toggle or set a boolean state.',
+      usecase: 'show/hide modal, show/hide password',
+    },
+    {
+      name: 'useCountDown',
+      href: 'use-count-down',
+      desc: 'Start, pause, resume, and reset a countdown timer.',
+      usecase:
+        'display a countdown timer, limit certain action within a time frame like resend OTP',
+    },
+    {
+      name: 'useFirstMount',
+      href: 'use-first-mount',
+      desc: 'Check if component is just mounted (on first render).',
+      usecase: 'do something only on first render or vice versa',
+    },
+    {
+      name: 'usePrevious',
+      href: 'use-previous',
+      desc: 'Get the previous state or prop based on the value from previous render.',
+      usecase: 'when you need the value of the previous state/prop',
+    },
+    {
+      name: 'usePreviousDistinct',
+      href: 'use-previous-distinct',
+      desc: 'Get the previous state or prop based on the comparation with current value.',
+      usecase: 'when you need the value of the previous state/prop',
+    },
+    {
+      name: 'useUpdateEffect',
+      href: 'use-update-effect',
+      desc: 'Like useEffect hook, but skip on first mount.',
+      usecase: 'do something when a state updated',
+    },
+    {
+      name: 'useIsomorphicLayoutEffect',
+      href: 'use-isomorphic-layout-effect',
+      desc: 'Same as useLayoutEffect, but will not show warning in Next.js (SSR).',
+      usecase: '',
+    },
+  ]}
+/>
+
+### Event 🗓
+
+<HookList
+  items={[
+    {
+      name: 'useIntersection',
+      href: 'use-intersection',
+      desc: "Tracks an HTML element's intersection.",
+      usecase: 'detect if user has reached the bottom of page to load more data (infinite scroll)',
+    },
+    {
+      name: 'useInView',
+      href: 'use-in-view',
+      desc: "Tracks an HTML element's visibility on screen or a specified element.",
+      usecase:
+        'display something differently depending on whether an element is visible on screen or not',
+    },
+    {
+      name: 'useWindowEvent',
+      href: 'use-window-event',
+      desc: 'Add event listener to window.',
+      usecase:
+        'do something when window received a post-message, user switch tab (window blur event), and many more',
+    },
+  ]}
+/>
+
+### Optimization 🚀
+
+<HookList
+  items={[
+    {
+      name: 'useDebounce',
+      href: 'use-debounce',
+      desc: 'Get debounced value.',
+      usecase: 'limit state update to prevent calling API multiple times',
+    },
+    {
+      name: 'useDebounceFn',
+      href: 'use-debounce-fn',
+      desc: 'Debounces a function.',
+      usecase:
+        'limit the times a function is called, like limiting API call function when user is typing',
+    },
+    {
+      name: 'useThrottle',
+      href: 'use-throttle',
+      desc: 'Get throttled value.',
+      usecase: 'limit state update to prevent calling API multiple times',
+    },
+    {
+      name: 'useThrottleFn',
+      href: 'use-throttle-fn',
+      desc: 'Throttles a function.',
+      usecase:
+        'limit the times a function is called, like limiting API call function when user is typing',
+    },
+  ]}
+/>
+
+### Storage 🗄
+
+<HookList
+  items={[
+    {
+      name: 'useLocalStorage',
+      href: 'use-storage',
+      desc: 'Like <code>useState</code> but persisted on <code>localStorage</code>, SSG/SSR-friendly.',
+      usecase: 'manage theme, language, etc.',
+    },
+    {
+      name: 'useSessionStorage',
+      href: 'use-storage',
+      desc: 'Like <code>useState</code> but persisted on <code>sessionStorage</code>, SSG/SSR-friendly.',
+      usecase: 'manage temporary value',
+    },
+  ]}
+/>
+
+---
+
+## Changelog
+
+https://github.com/afiiif/react-power-ups/releases
