@@ -1,0 +1,102 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import Param from '@site/src/components/param';
+import BrowserWindow from '@site/src/components/browser-window';
+
+import { Demo } from '@site/src/examples/use-update-effect';
+
+# useUpdateEffect
+
+Like `useEffect` hook, but skip on first render.
+
+<hr className="custom-hr" />
+
+## API
+
+```js
+useUpdateEffect(effect, deps);
+```
+
+https://react.dev/reference/react/useEffect
+
+### Options
+
+- <Param name="effect" type="EffectCallback" isRequired />
+
+  - Effect callback just like in `useEffect`
+
+- <Param name="deps" type="DependencyList" isRequired={false} />
+
+  - Dependency list just like in `useEffect`
+
+### Returns
+
+_No return_
+
+<hr className="custom-hr" />
+
+## Examples
+
+<BrowserWindow>
+  <Demo />
+</BrowserWindow>
+
+<Tabs>
+<TabItem value="JS" label="JS">
+
+```jsx
+import { useUpdateEffect } from 'react-power-ups';
+
+function Demo() {
+  const [count, setCount] = useState(0);
+  const increment = () => setCount((prev) => prev + 1);
+
+  useEffect(() => {
+    console.log('Hello from useEffect');
+  }, [count]);
+
+  useUpdateEffect(() => {
+    // This only called when count updated
+    console.log('Hello from useUpdateEffect');
+  }, [count]);
+
+  return (
+    <>
+      <div>Count: {count}</div>
+      <button onClick={increment}>Increment</button>
+    </>
+  );
+}
+```
+
+</TabItem>
+<TabItem value="TS" label="TS" default>
+
+```jsx
+import { useUpdateEffect } from 'react-power-ups';
+
+function Demo() {
+  const [count, setCount] = useState(0);
+  const increment = () => setCount((prev) => prev + 1);
+
+  useEffect(() => {
+    console.log('Hello from useEffect');
+  }, [count]);
+
+  useUpdateEffect(() => {
+    // This only called when count updated
+    console.log('Hello from useUpdateEffect');
+  }, [count]);
+
+  return (
+    <>
+      <div>Count: {count}</div>
+      <button onClick={increment}>Increment</button>
+    </>
+  );
+}
+```
+
+</TabItem>
+</Tabs>

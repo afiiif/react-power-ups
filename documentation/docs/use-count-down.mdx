@@ -1,0 +1,195 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import Param from '@site/src/components/param';
+import BrowserWindow from '@site/src/components/browser-window';
+
+import { DemoTimer, DemoOTP } from '@site/src/examples/use-count-down';
+
+# useCountDown
+
+Start, pause, resume, and reset a countdown timer.
+
+<hr className="custom-hr" />
+
+## API
+
+```js
+const [timeLeft, actions] = useCountDown({
+  defaultDuration,
+  interval,
+  startOnMount,
+});
+```
+
+### Options
+
+- <Param name="defaultDuration" type="number" isRequired={false} />
+
+  - Defaults to `60000` (60 seconds)
+  - Default duration in milliseconds
+
+- <Param name="interval" type="number" isRequired={false} />
+
+  - Defaults to `10000` (1 second)
+  - Countdown interval in milliseconds
+
+- <Param name="startOnMount" type="boolean" isRequired={false} />
+
+  - Defaults to `false`
+  - Determine whether the countdown should start on mount
+
+### Returns
+
+- <Param name="timeLeft" type="number" />
+
+  - Timeleft in milliseconds
+
+- **`actions`**
+
+  - <Param name="actions.start" type="(duration?: number) => void" />
+
+    - Function to start the countdown timer
+    - You can customize the countdown timer duration in this function
+
+  - <Param name="actions.pause" type="() => void" />
+
+    - Function to pause the countdown timer
+
+  - <Param name="actions.resume" type="() => void" />
+
+    - Function to resume the paused countdown timer
+
+  - <Param name="actions.reset" type="() => void" />
+
+    - Function to reset the countdown timer, this will set the timerleft to its default duration
+
+  - <Param name="actions.stop" type="() => void" />
+
+    - Function to stop the countdown timer, this will set the timerleft to 0
+
+<hr className="custom-hr" />
+
+## Examples
+
+### Countdown Timer
+
+<BrowserWindow>
+  <DemoTimer />
+</BrowserWindow>
+
+<Tabs>
+<TabItem value="JS" label="JS">
+
+```jsx
+import { useCountDown } from 'react-power-ups';
+
+function DemoTimer() {
+  const [timeLeft, actions] = useCountDown({ defaultDuration: 10_000, interval: 100 });
+
+  return (
+    <>
+      <div>{(timeLeft / 1000).toFixed(2)}</div>
+
+      <button onClick={() => actions.start()}>Start</button>
+      <button onClick={() => actions.start(4_200)}>Start for 4.2s</button>
+      <button onClick={() => actions.pause()}>Pause</button>
+      <button onClick={() => actions.resume()}>Resume</button>
+      <button onClick={() => actions.reset()}>Reset</button>
+      <button onClick={() => actions.stop()}>Stop</button>
+    </>
+  );
+}
+```
+
+</TabItem>
+<TabItem value="TS" label="TS" default>
+
+```jsx
+import { useCountDown } from 'react-power-ups';
+
+function DemoTimer() {
+  const [timeLeft, actions] = useCountDown({ defaultDuration: 10_000, interval: 100 });
+
+  return (
+    <>
+      <div>{(timeLeft / 1000).toFixed(2)}</div>
+
+      <button onClick={() => actions.start()}>Start</button>
+      <button onClick={() => actions.start(4_200)}>Start for 4.2s</button>
+      <button onClick={() => actions.pause()}>Pause</button>
+      <button onClick={() => actions.resume()}>Resume</button>
+      <button onClick={() => actions.reset()}>Reset</button>
+      <button onClick={() => actions.stop()}>Stop</button>
+    </>
+  );
+}
+```
+
+</TabItem>
+</Tabs>
+
+### Sending OTP Timer
+
+<BrowserWindow>
+  <DemoOTP />
+</BrowserWindow>
+
+<Tabs>
+<TabItem value="JS" label="JS">
+
+```jsx
+import { useCountDown } from 'react-power-ups';
+
+function DemoOTP() {
+  const [timeLeft, { start }] = useCountDown({ defaultDuration: 10_000, startOnMount: true });
+
+  const sendOTP = () => {
+    console.info('Resending OTP...');
+    start();
+  };
+
+  return (
+    <>
+      <p>OTP sent, check your phone!</p>
+
+      <button onClick={sendOTP} disabled={timeLeft > 0}>
+        {timeLeft ? '🚫' : '🟢'} Send OTP
+      </button>
+
+      {timeLeft > 0 && <span> Resend OTP in {timeLeft / 1000}s</span>}
+    </>
+  );
+}
+```
+
+</TabItem>
+<TabItem value="TS" label="TS" default>
+
+```jsx
+import { useCountDown } from 'react-power-ups';
+
+function DemoOTP() {
+  const [timeLeft, { start }] = useCountDown({ defaultDuration: 10_000, startOnMount: true });
+
+  const sendOTP = () => {
+    console.info('Resending OTP...');
+    start();
+  };
+
+  return (
+    <>
+      <p>OTP sent, check your phone!</p>
+
+      <button onClick={sendOTP} disabled={timeLeft > 0}>
+        {timeLeft ? '🚫' : '🟢'} Send OTP
+      </button>
+
+      {timeLeft > 0 && <span> Resend OTP in {timeLeft / 1000}s</span>}
+    </>
+  );
+}
+```
+
+</TabItem>
+</Tabs>

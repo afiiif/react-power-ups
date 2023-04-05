@@ -1,0 +1,86 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import Param from '@site/src/components/param';
+import BrowserWindow from '@site/src/components/browser-window';
+
+import { Demo } from '@site/src/examples/use-first-mount';
+
+# useFirstMount
+
+Check if component is just mounted (on first render).
+
+<hr className="custom-hr" />
+
+## API
+
+```js
+const isFirst = useFirstMount();
+```
+
+### Options
+
+_No need any option_
+
+### Returns
+
+- <Param name="isFirst" type="boolean" />
+
+  - Value will be `true` if component is just mounted, and `false` otherwise
+
+<hr className="custom-hr" />
+
+## Examples
+
+<BrowserWindow>
+  <Demo />
+</BrowserWindow>
+
+<Tabs>
+<TabItem value="JS" label="JS">
+
+```jsx
+import { useFirstMount } from 'react-power-ups';
+
+function Demo() {
+  const [count, setCount] = useState(0);
+  const increment = () => setCount((prev) => prev + 1);
+
+  const isFirst = useFirstMount();
+
+  return (
+    <>
+      <span>Count: {count}</span>
+      <button onClick={increment}>Increment (trigger re-render)</button>
+
+      <div>First render? {isFirst ? 'Yes' : 'No'}</div>
+    </>
+  );
+}
+```
+
+</TabItem>
+<TabItem value="TS" label="TS" default>
+
+```jsx
+import { useFirstMount } from 'react-power-ups';
+
+function Demo() {
+  const [count, setCount] = useState(0);
+  const increment = () => setCount((prev) => prev + 1);
+
+  const isFirst = useFirstMount();
+
+  return (
+    <>
+      <span>Count: {count}</span>
+      <button onClick={increment}>Increment (trigger re-render)</button>
+
+      <div>First render? {isFirst ? 'Yes' : 'No'}</div>
+    </>
+  );
+}
+```
+
+</TabItem>
+</Tabs>

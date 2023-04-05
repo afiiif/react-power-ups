@@ -1,0 +1,14 @@
+# useIsomorphicLayoutEffect
+
+Does exactly same as `useLayoutEffect`.
+
+BUT will use `useEffect` in server side to prevent warning from Next.js or any SSR-framework.
+
+```js
+const isBrowser = typeof window !== 'undefined';
+const useIsomorphicLayoutEffect = isBrowser ? useLayoutEffect : useEffect;
+```
+
+## API
+
+https://react.dev/reference/react/useLayoutEffect

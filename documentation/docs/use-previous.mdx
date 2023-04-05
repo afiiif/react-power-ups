@@ -1,0 +1,102 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import Param from '@site/src/components/param';
+import BrowserWindow from '@site/src/components/browser-window';
+
+import { Demo } from '@site/src/examples/use-previous';
+
+# usePrevious
+
+Get the previous state or prop based on the value **from previous render**.
+
+:::tip
+
+If you want the previous value **based on equality**, then use [usePreviousDistinct](./use-previous-distinct)
+
+:::
+
+<hr className="custom-hr" />
+
+## API
+
+```js
+const prevState = usePrevious(state);
+```
+
+### Options
+
+- <Param name="state" type="any" isRequired />
+
+  - The state (or prop) value
+
+### Returns
+
+- <Param name="prevState" type="any" />
+
+  - The previous value of the state (or prop) from the previous render
+
+<hr className="custom-hr" />
+
+## Examples
+
+<BrowserWindow>
+  <Demo />
+</BrowserWindow>
+
+<Tabs>
+<TabItem value="JS" label="JS">
+
+```jsx
+import { usePrevious } from 'react-power-ups';
+
+function Demo() {
+  const [count, setCount] = useState(0);
+  const increment = () => setCount((prev) => prev + 1);
+
+  const prevCount = usePrevious(count);
+
+  const [, triggerReRender] = useState(0);
+
+  return (
+    <>
+      <div>Count: {count}</div>
+      <button onClick={increment}>Increment</button>
+
+      <div>Previous count: {prevCount ?? <i>undefined</i>}</div>
+
+      <button onClick={() => triggerReRender(Math.random())}>Trigger Re-Render</button>
+    </>
+  );
+}
+```
+
+</TabItem>
+<TabItem value="TS" label="TS" default>
+
+```jsx
+import { usePrevious } from 'react-power-ups';
+
+function Demo() {
+  const [count, setCount] = useState(0);
+  const increment = () => setCount((prev) => prev + 1);
+
+  const prevCount = usePrevious(count);
+
+  const [, triggerReRender] = useState(0);
+
+  return (
+    <>
+      <div>Count: {count}</div>
+      <button onClick={increment}>Increment</button>
+
+      <div>Previous count: {prevCount ?? <i>undefined</i>}</div>
+
+      <button onClick={() => triggerReRender(Math.random())}>Trigger Re-Render</button>
+    </>
+  );
+}
+```
+
+</TabItem>
+</Tabs>

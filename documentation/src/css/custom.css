@@ -106,6 +106,8 @@ hr.custom-hr {
 
 /* ---------------------------------------------------------------------------------------------- */
 
-.btn {
-  @apply px-4 py-2 bg-slate-500 text-white border-none rounded-lg text-base;
+@layer components {
+  .btn {
+    @apply px-4 py-2 bg-slate-500 text-white border-none rounded-lg text-base disabled:bg-slate-500/40;
+  }
 }
