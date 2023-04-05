@@ -7,6 +7,7 @@ type CountDownOptions = {
 };
 
 export function countDown({ defaultDuration, interval, callback }: CountDownOptions) {
+  let duration_: number;
   let duration: number;
   let startTime: number | null = null;
   let timeLeft: number;
@@ -49,6 +50,7 @@ export function countDown({ defaultDuration, interval, callback }: CountDownOpti
 
   const start = (durationParam = defaultDuration) => {
     cancel();
+    duration_ = durationParam;
     duration = durationParam;
     startTime = null;
     requestId = window.requestAnimationFrame(run);
@@ -68,10 +70,17 @@ export function countDown({ defaultDuration, interval, callback }: CountDownOpti
 
   const reset = () => {
     cancel();
+    duration = duration_;
+    startTime = null;
+    callback(duration);
+  };
+
+  const stop = () => {
+    cancel();
     callback(0);
   };
 
-  return { start, pause, resume, reset, cancel };
+  return { start, pause, resume, reset, stop, cancel };
 }
 
 export type Options = {
@@ -85,6 +94,7 @@ export type Actions = {
   pause: () => void;
   resume: () => void;
   reset: () => void;
+  stop: () => void;
 };
 
 /**
@@ -102,7 +112,7 @@ export default function useCountDown({
   interval = 1000,
   startOnMount = false,
 }: Options = {}): [number, Actions] {
-  const [timeLeft, setTimeLeft] = useState(startOnMount ? defaultDuration : 0);
+  const [timeLeft, setTimeLeft] = useState(defaultDuration);
 
   const { cancel, ...restActions } = useMemo(
     () => countDown({ defaultDuration, interval, callback: setTimeLeft }),
