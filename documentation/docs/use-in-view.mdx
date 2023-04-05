@@ -1,0 +1,166 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import Param from '@site/src/components/param';
+import BrowserWindow from '@site/src/components/browser-window';
+
+import { Demo } from '@site/src/examples/use-in-view';
+
+# useInView
+
+Tracks an HTML element's visibility using [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API).
+
+<hr className="custom-hr" />
+
+## API
+
+```js
+const [ref, isInView] = useInView(initialIsInView, {
+  onIntersect,
+  onEnter,
+  onLeave,
+  enabled,
+  root,
+  rootMargin,
+  threshold,
+});
+```
+
+### Options
+
+- <Param name="initialIsInView" type="boolean" isRequired={false} />
+
+  - Defaults to `false`
+  - Determine initial state of `isInView`
+
+- <Param name="options" type="Object" isRequired={false} />
+
+  - Defaults to `{}`
+
+- <Param
+    name="options.onIntersect"
+    type="(isIntersecting: boolean, entry?: IntersectionObserverEntry) => void"
+    isRequired={false}
+  />
+
+  - Defaults to `() => {}`
+  - Callback fired on enter & on leave
+
+- <Param
+    name="options.onEnter"
+    type="(entry?: IntersectionObserverEntry) => void"
+    isRequired={false}
+  />
+
+  - Defaults to `() => {}`
+  - Callback fired on enter
+
+- <Param
+    name="options.onLeave"
+    type="(entry?: IntersectionObserverEntry) => void"
+    isRequired={false}
+  />
+
+  - Defaults to `() => {}`
+  - Callback fired on leave
+
+- <Param name="options.enabled" type="boolean" isRequired={false} />
+
+  - Defaults to `true`
+  - Determine whether intersection observer should be enabled or not
+
+- <Param name="options.root" type="Element | Document" isRequired={false} />
+
+  - Defaults to the browser viewport if not specified or if `null`
+  - The element that is used as the viewport for checking visibility of the target. Must be the ancestor of the target
+
+- <Param name="options.rootMargin" type="string" isRequired={false} />
+
+  - Defaults to all zeros
+  - Margin around the root. Can have values similar to the CSS margin property, e.g. `"10px 20px 30px 40px"` (top, right, bottom, left), the values can be percentages
+
+- <Param name="options.threshold" type="number" isRequired={false} />
+
+  - Defaults to `0`
+  - Indicate at what percentage of the target's visibility the observer's callback should be executed
+
+### Returns
+
+- <Param name="ref" type="React.MutableRefObject" />
+
+  - The ref used on JSX element
+
+- <Param name="isInView" type="boolean" />
+
+  - The state that determine whether the element has entered the viewport
+
+<hr className="custom-hr" />
+
+## Examples
+
+<BrowserWindow className="relative">
+  <Demo />
+</BrowserWindow>
+
+<Tabs>
+<TabItem value="JS" label="JS">
+
+```jsx
+import { useInView } from 'react-power-ups';
+
+function Demo() {
+  const [ref, isInView] = useInView(false, {
+    onEnter: () => console.log('Element appeared in page'),
+    onLeave: () => console.log('Element dissappeared from page'),
+  });
+
+  return (
+    <div className={`transition-colors ${!isInView ? 'bg-slate-900 text-white' : 'bg-white'}`}>
+      <div className="absolute">
+        <span>{isInView ? 'Day' : 'Night'}</span>
+      </div>
+
+      <div style={{ height: 1000 }} />
+
+      <div ref={ref} className="sun">
+        Sun
+      </div>
+
+      <div style={{ height: 1000 }} />
+    </div>
+  );
+}
+```
+
+</TabItem>
+<TabItem value="TS" label="TS" default>
+
+```jsx
+import { useInView } from 'react-power-ups';
+
+function Demo() {
+  const [ref, isInView] = useInView(false, {
+    onEnter: () => console.log('Element appeared in page'),
+    onLeave: () => console.log('Element dissappeared from page'),
+  });
+
+  return (
+    <div className={`transition-colors ${!isInView ? 'bg-slate-900 text-white' : 'bg-white'}`}>
+      <div className="absolute">
+        <span>{isInView ? 'Day' : 'Night'}</span>
+      </div>
+
+      <div style={{ height: 1000 }} />
+
+      <div ref={ref} className="sun">
+        Sun
+      </div>
+
+      <div style={{ height: 1000 }} />
+    </div>
+  );
+}
+```
+
+</TabItem>
+</Tabs>

@@ -59,6 +59,12 @@
   gap: 1.5rem;
 }
 @media (min-width: 997px) {
+  .theme-doc-sidebar-container {
+    border-right: none !important;
+  }
+  main {
+    padding-left: 0.5rem;
+  }
   .footer .footer__col {
     display: flex;
     justify-content: space-between;
@@ -68,6 +74,11 @@
   }
   .footer .footer__items {
     gap: 2rem;
+  }
+}
+@media (min-width: 1440px) {
+  .docItemCol_node_modules-\@docusaurus-theme-classic-lib-theme-DocItem-Layout-styles-module {
+    padding-right: 4%;
   }
 }
 

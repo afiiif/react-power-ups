@@ -1,3 +1,0 @@
-# useWindowEvent
-
-TODO 🚧

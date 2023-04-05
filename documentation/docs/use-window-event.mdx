@@ -1,0 +1,107 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import Param from '@site/src/components/param';
+import BrowserWindow from '@site/src/components/browser-window';
+
+import { Demo } from '@site/src/examples/use-window-event';
+
+# useWindowEvent
+
+Add event listener to window.
+
+<hr className="custom-hr" />
+
+## API
+
+```js
+useWindowEvent(eventType, handler);
+```
+
+### Options
+
+- <Param name="eventType" type="string" isRequired />
+
+  - The type of window event
+  - See https://developer.mozilla.org/en-US/docs/Web/API/Window#events
+
+- <Param name="handler" type="(ev: WindowEventMap[T]) => any" isRequired />
+
+  - Handler
+
+### Returns
+
+_No return_
+
+<hr className="custom-hr" />
+
+## Examples
+
+<BrowserWindow>
+  <Demo />
+</BrowserWindow>
+
+<Tabs>
+<TabItem value="JS" label="JS">
+
+```jsx
+import { useState } from 'react';
+import { useWindowEvent } from 'react-power-ups';
+
+function Demo() {
+  const [coord, setCoord] = useState<number[]>([]);
+  const [key, setKey] = useState('');
+
+  useWindowEvent('click', (evt) => {
+    setCoord([evt.clientX, evt.clientY]);
+  });
+
+  useWindowEvent('keyup', (evt) => {
+    setKey(evt.key);
+  });
+
+  return (
+    <>
+      <div className="pt-4">
+        Last clicked coordinate: {coord[0] ?? '-'}, {coord[1] ?? '-'}
+      </div>
+
+      <div>Last pressed key: &quot;{key}&quot;</div>
+    </>
+  );
+}
+```
+
+</TabItem>
+<TabItem value="TS" label="TS" default>
+
+```jsx
+import { useState } from 'react';
+import { useWindowEvent } from 'react-power-ups';
+
+function Demo() {
+  const [coord, setCoord] = useState([]);
+  const [key, setKey] = useState('');
+
+  useWindowEvent('click', (evt) => {
+    setCoord([evt.clientX, evt.clientY]);
+  });
+
+  useWindowEvent('keyup', (evt) => {
+    setKey(evt.key);
+  });
+
+  return (
+    <>
+      <div className="pt-4">
+        Last clicked coordinate: {coord[0] ?? '-'}, {coord[1] ?? '-'}
+      </div>
+
+      <div>Last pressed key: &quot;{key}&quot;</div>
+    </>
+  );
+}
+```
+
+</TabItem>
+</Tabs>

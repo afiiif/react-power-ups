@@ -1,3 +1,0 @@
-# useIntersection
-
-TODO 🚧
