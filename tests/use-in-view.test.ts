@@ -23,6 +23,9 @@ describe('useInView', () => {
       };
     });
 
+    const onIntersect = jest.fn();
+    const onLeave = jest.fn();
+
     const { result, rerender } = renderHook(
       (props: UseIntersectionProps) => useInView(false, props),
       {
@@ -32,17 +35,21 @@ describe('useInView', () => {
     const element = document.createElement('div');
     result.current[0].current = element;
 
-    rerender({ enabled: true });
+    rerender({ enabled: true, onIntersect, onLeave });
 
     act(() => {
       callback([{ isIntersecting: true }]);
     });
     expect(result.current[1]).toBe(true);
+    expect(onIntersect).toHaveBeenCalledTimes(1);
+    expect(onLeave).toHaveBeenCalledTimes(0);
 
     act(() => {
       callback([{ isIntersecting: false }]);
     });
     expect(result.current[1]).toBe(false);
+    expect(onIntersect).toHaveBeenCalledTimes(2);
+    expect(onLeave).toHaveBeenCalledTimes(1);
 
     (window as any).IntersectionObserver.mockClear();
     delete (window as any).IntersectionObserver;
