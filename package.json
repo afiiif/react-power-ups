@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/afiiif/react-power-ups/issues"
   },
-  "homepage": "https://github.com/afiiif/react-power-ups#readme",
+  "homepage": "https://afiiif.github.io/react-power-ups/docs/overview",
   "main": "lib/index.js",
   "module": "esm/index.js",
   "sideEffects": false,
