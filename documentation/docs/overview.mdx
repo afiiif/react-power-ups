@@ -5,25 +5,49 @@ import TabItem from '@theme/TabItem';
 
 ## TL;DR
 
-<div className="text-xl pb-8">
+<ul className="text-xl pb-4 [&>li]:pb-3 [&>li>ul]:text-lg">
+  <li>It is a collection of React hooks</li>
+  <li>
+    Motivations:
+    <ul>
+      <li>Make common tasks easier</li>
+      <li className="italic">
+        Why create these hooks on every project? 🐌
+        <br />
+        Just install this package 🚀
+      </li>
+    </ul>
+  </li>
+  <li>
+    Why choose this package?
+    <ul>
+      <li>Simple, no over-abstraction</li>
+      <li>Only 6.3 kB in size</li>
+      <li>
+        <strong>Tree-shakeable</strong> to remove unused modules from production builds
+      </li>
+      <li>TypeScript 🟦</li>
+      <li>SSR-friendly 🌐</li>
+      <li>Unit tested 🧪</li>
+    </ul>
+  </li>
+</ul>
 
-- It is a collection of React hooks
-- Motivations:
-  - Make common tasks easier
-  - Why create these hooks on every project?<br />Just install this package
-- Why choose this package?
-  - Simple, no over-abstraction
-  - Only 6.3 kB in size
-  - **Tree-shakeable** to remove unused modules from production builds
-  - TypeScript 🟦
-  - SSR-friendly 🌐
-  - Unit tested 🧪
+<section className="shadow-md border border-solid border-[--ifm-color-gray-200] rounded-lg overflow-hidden">
 
+<div className="px-4 py-2.5 bg-[--ifm-color-emphasis-100]">
+  <a
+    href="https://bundlephobia.com/package/react-power-ups"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    https://bundlephobia.com/package/react-power-ups
+  </a>
 </div>
 
-https://bundlephobia.com/package/react-power-ups
+<hr className="my-0" />
 
-<ul className="list-none bundle-size">
+<ul className="list-none bundle-size px-4 py-2.5">
   <li>
     <span>
       635.0<span>B</span>
@@ -121,6 +145,8 @@ https://bundlephobia.com/package/react-power-ups
     <div>useWindowEvent</div>
   </li>
 </ul>
+
+</section>
 
 <hr className="custom-hr" />
 
