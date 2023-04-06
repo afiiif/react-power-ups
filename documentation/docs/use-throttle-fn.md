@@ -1,3 +1,0 @@
-# useThrottleFn
-
-TODO 🚧

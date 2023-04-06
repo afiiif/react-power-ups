@@ -99,7 +99,7 @@ const ref = useIntersection({
 ```jsx
 import { useIntersection } from 'react-power-ups';
 
-function Demo() {
+export function Demo() {
   const refA = useIntersection({
     onEnter: () => console.log('Element A appeared in page'),
     onLeave: () => console.log('Element A dissappeared from page'),
@@ -136,7 +136,7 @@ function Demo() {
 ```tsx
 import { useIntersection } from 'react-power-ups';
 
-function Demo() {
+export function Demo() {
   const refA = useIntersection({
     onEnter: () => console.log('Element A appeared in page'),
     onLeave: () => console.log('Element A dissappeared from page'),

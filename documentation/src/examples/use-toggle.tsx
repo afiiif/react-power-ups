@@ -9,7 +9,7 @@ export function DemoPassword() {
       <input
         type={isShowPassword ? 'text' : 'password'}
         defaultValue="abc123"
-        className="mr-2 px-4 py-2 rounded-lg border border-solid text-base"
+        className="input mr-2"
       />
       <button onClick={toggleShowPassword} className="btn">
         {isShowPassword ? 'Hide' : 'Show'} Password

@@ -48,7 +48,7 @@ _No return_
 import { useState } from 'react';
 import { useWindowEvent } from 'react-power-ups';
 
-function Demo() {
+export function Demo() {
   const [coord, setCoord] = useState<number[]>([]);
   const [key, setKey] = useState('');
 
@@ -79,7 +79,7 @@ function Demo() {
 import { useState } from 'react';
 import { useWindowEvent } from 'react-power-ups';
 
-function Demo() {
+export function Demo() {
   const [coord, setCoord] = useState([]);
   const [key, setKey] = useState('');
 

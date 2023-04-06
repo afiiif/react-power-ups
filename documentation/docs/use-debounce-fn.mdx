@@ -1,0 +1,123 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import Param from '@site/src/components/param';
+import BrowserWindow from '@site/src/components/browser-window';
+
+import { DemoDebounce, DemoThrottle } from '@site/src/examples/use-debounce-fn-throttle-fn';
+
+# useDebounceFn
+
+Debounces a function.
+
+<hr className="custom-hr" />
+
+## API
+
+```js
+const debouncedFn = useDebounceFn(fn, delay);
+```
+
+### Options
+
+- <Param name="fn" type="Function" isRequired />
+
+  - The function to be debounced
+
+- <Param name="delay" type="number" isRequired />
+
+  - Delay in miliseconds
+
+### Returns
+
+- <Param name="debouncedFn" type="Function" />
+
+  - The debounced function
+
+- <Param name="clearTimeout" type="() => void" />
+
+  - The function to clear the debounce timeout (to cancel debounce)
+
+<hr className="custom-hr" />
+
+## Examples
+
+<BrowserWindow>
+  <div className="pb-4">ℹ️ Check the console</div>
+  <DemoDebounce />
+  <div className="h-4" />
+  <DemoThrottle />
+</BrowserWindow>
+
+<Tabs>
+<TabItem value="JS" label="JS">
+
+```jsx
+import { useDebounceFn, useThrottleFn } from 'react-power-ups';
+
+export function DemoDebounce() {
+  const [fetchData, cancel] = useDebounceFn((value) => {
+    console.info(`Fetch data by keyword "${value}" ⏳`);
+  }, 1000);
+
+  return (
+    <>
+      <h3>Debounce 1 second</h3>
+      <input type="text" onChange={(e) => fetchData(e.target.value)} />
+      <button onClick={cancel}>Cancel</button>
+    </>
+  );
+}
+
+export function DemoThrottle() {
+  const [fetchData, cancel] = useThrottleFn((value) => {
+    console.info(`Fetch data by keyword "${value}" ⏳`);
+  }, 1000);
+
+  return (
+    <>
+      <h3>Throttle 1 second</h3>
+      <input type="text" onChange={(e) => fetchData(e.target.value)} />
+      <button onClick={cancel}>Cancel</button>
+    </>
+  );
+}
+```
+
+</TabItem>
+<TabItem value="TS" label="TS" default>
+
+```tsx
+import { useDebounceFn, useThrottleFn } from 'react-power-ups';
+
+export function DemoDebounce() {
+  const [fetchData, cancel] = useDebounceFn((value: string) => {
+    console.info(`Fetch data by keyword "${value}" ⏳`);
+  }, 1000);
+
+  return (
+    <>
+      <h3>Debounce 1 second</h3>
+      <input type="text" onChange={(e) => fetchData(e.target.value)} />
+      <button onClick={cancel}>Cancel</button>
+    </>
+  );
+}
+
+export function DemoThrottle() {
+  const [fetchData, cancel] = useThrottleFn((value: string) => {
+    console.info(`Fetch data by keyword "${value}" ⏳`);
+  }, 1000);
+
+  return (
+    <>
+      <h3>Throttle 1 second</h3>
+      <input type="text" onChange={(e) => fetchData(e.target.value)} />
+      <button onClick={cancel}>Cancel</button>
+    </>
+  );
+}
+```
+
+</TabItem>
+</Tabs>

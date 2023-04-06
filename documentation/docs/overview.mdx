@@ -3,25 +3,124 @@ import TabItem from '@theme/TabItem';
 
 # Overview
 
-React Power-Ups is a collection of React hooks designed to make common tasks in React development easier and more efficient. While the hooks themselves are **simple**, their purpose is to **save time and effort** for developers. **Rather than having to write the same hooks repeatedly** across multiple projects, developers can easily import the hooks they need from this package and get to work right away.
+## TL;DR
 
-This package was built using **TypeScript**, which provides type-checking and improves the overall development experience. TypeScript catches errors early on and provides **autocomplete** and **documentation**, making it easier to maintain and understand the codebase.
+<div className="text-xl pb-8">
 
-<hr className="custom-hr" />
+- It is a collection of React hooks
+- Motivations:
+  - Make common tasks easier
+  - Why create these hooks on every project?<br />Just install this package
+- Why choose this package?
+  - Simple, no over-abstraction
+  - Only 6.3 kB in size
+  - **Tree-shakeable** to remove unused modules from production builds
+  - TypeScript 🟦
+  - SSR-friendly 🌐
+  - Unit tested 🧪
 
-## Key Features
+</div>
 
-⚖️ **Lightweight**: Only 6.3 kB (minified size)
+https://bundlephobia.com/package/react-power-ups
 
-🌳 **Tree-Shakeable**: Remove unused code from your production builds
-
-🛡 **TypeScript**: Ensuring type safety and easy integration with your TypeScript projects
-
-🌐 **SSR support**: You can use it with confidence in your server-rendered React applications
-
-📱 **Cross-Platform**: Can be used in **React Native** too<br /><span className="ml-8 text-sm text-[--ifm-color-emphasis-800] italic">Except the hooks related with `window` object</span>
-
-💡 **Real-World Examples**: Our documentation includes real-world examples of how to use our hooks in various scenarios, helping you get up and running quickly and easily
+<ul className="list-none bundle-size">
+  <li>
+    <span>
+      635.0<span>B</span>
+    </span>
+    <div>useCountDown</div>
+  </li>
+  <li>
+    <span>
+      457.0<span>B</span>
+    </span>
+    <div>useDebounce</div>
+  </li>
+  <li>
+    <span>
+      320.0<span>B</span>
+    </span>
+    <div>useDebounceFn</div>
+  </li>
+  <li>
+    <span>
+      242.0<span>B</span>
+    </span>
+    <div>useFirstMount</div>
+  </li>
+  <li>
+    <span>
+      678.0<span>B</span>
+    </span>
+    <div>useInView</div>
+  </li>
+  <li>
+    <span>
+      561.0<span>B</span>
+    </span>
+    <div>useIntersection</div>
+  </li>
+  <li>
+    <span>
+      294.0<span>B</span>
+    </span>
+    <div>useIsomorphicLayoutEffect</div>
+  </li>
+  <li>
+    <span>
+      679.0<span>B</span>
+    </span>
+    <div>useLocalStorage</div>
+  </li>
+  <li>
+    <span>
+      218.0<span>B</span>
+    </span>
+    <div>usePrevious</div>
+  </li>
+  <li>
+    <span>
+      369.0<span>B</span>
+    </span>
+    <div>usePreviousDistinct</div>
+  </li>
+  <li>
+    <span>
+      585.0<span>B</span>
+    </span>
+    <div>useSessionStorage</div>
+  </li>
+  <li>
+    <span>
+      491.0<span>B</span>
+    </span>
+    <div>useThrottle</div>
+  </li>
+  <li>
+    <span>
+      336.0<span>B</span>
+    </span>
+    <div>useThrottleFn</div>
+  </li>
+  <li>
+    <span>
+      237.0<span>B</span>
+    </span>
+    <div>useToggle</div>
+  </li>
+  <li>
+    <span>
+      294.0<span>B</span>
+    </span>
+    <div>useUpdateEffect</div>
+  </li>
+  <li>
+    <span>
+      295.0<span>B</span>
+    </span>
+    <div>useWindowEvent</div>
+  </li>
+</ul>
 
 <hr className="custom-hr" />
 
@@ -199,13 +298,13 @@ export const HookList = ({ items }) => (
   items={[
     {
       name: 'useLocalStorage',
-      href: 'use-storage',
+      href: 'use-local-storage',
       desc: 'Like <code>useState</code> but persisted on <code>localStorage</code>, SSG/SSR-friendly.',
       usecase: 'manage theme, language, etc.',
     },
     {
       name: 'useSessionStorage',
-      href: 'use-storage',
+      href: 'use-session-storage',
       desc: 'Like <code>useState</code> but persisted on <code>sessionStorage</code>, SSG/SSR-friendly.',
       usecase: 'manage temporary value',
     },

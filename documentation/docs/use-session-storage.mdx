@@ -1,0 +1,205 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import Param from '@site/src/components/param';
+import BrowserWindow from '@site/src/components/browser-window';
+
+import { DemoSimple, DemoAdvanced } from '@site/src/examples/use-session-storage';
+
+# useSessionStorage
+
+Like `useState` but persisted on `sessionStorage`.
+
+SSG/SSR-friendly.
+
+<hr className="custom-hr" />
+
+## API
+
+```js
+const [state, setState] = useSessionStorage({
+  key,
+  initialValue,
+  fallbackValue,
+  storageToStateFn,
+});
+```
+
+### Options
+
+- <Param name="key" type="string" isRequired />
+
+  - The sessionStorage key
+
+- <Param name="initialValue" type="any" isRequired={false} />
+
+  - Defaults to `null`
+  - The initial value of the state
+
+- <Param name="fallbackValue" type="any" isRequired={false} />
+
+  - Defaults to `null`
+  - Will be used if there is no data stored in the sessionStorage (with the specified key)
+
+- <Param name="storageToStateFn" type="(state: any) => any" isRequired={false} />
+
+  - Function to re-map the data from the sessionStorage
+
+### Returns
+
+- <Param name="state" type="any" />
+
+  - Just like `useState`
+
+- <Param name="setState" type="SetStateAction" />
+
+  - Just like `useState`
+
+<hr className="custom-hr" />
+
+## Examples
+
+### Simple
+
+<BrowserWindow>
+  <DemoSimple />
+</BrowserWindow>
+
+<Tabs>
+<TabItem value="JS" label="JS">
+
+```jsx
+import { useSessionStorage } from 'react-power-ups';
+
+export function DemoSimple() {
+  const [counter, setCounter] = useSessionStorage({
+    key: 'my-counter',
+    initialValue: 0,
+    fallbackValue: 0,
+  });
+
+  return (
+    <>
+      <div>Count: {counter}</div>
+      <button onClick={() => setCounter((prev) => prev + 1)}>Increment</button>
+
+      <button onClick={() => window.location.reload()}>Reload window</button>
+      <button onClick={() => sessionStorage.clear()}>Remove data in sessionStorage</button>
+    </>
+  );
+}
+```
+
+</TabItem>
+<TabItem value="TS" label="TS" default>
+
+```tsx
+import { useSessionStorage } from 'react-power-ups';
+
+export function DemoSimple() {
+  const [counter, setCounter] = useSessionStorage<number, number>({
+    key: 'my-counter',
+    initialValue: 0,
+    fallbackValue: 0,
+  });
+
+  return (
+    <>
+      <div>Count: {counter}</div>
+      <button onClick={() => setCounter((prev) => prev + 1)}>Increment</button>
+
+      <button onClick={() => window.location.reload()}>Reload window</button>
+      <button onClick={() => sessionStorage.clear()}>Remove data in sessionStorage</button>
+    </>
+  );
+}
+```
+
+</TabItem>
+</Tabs>
+
+### Advanced (with validation)
+
+<BrowserWindow>
+  <DemoAdvanced />
+</BrowserWindow>
+
+<Tabs>
+<TabItem value="JS" label="JS">
+
+```jsx
+import { useSessionStorage } from 'react-power-ups';
+
+export function DemoValidation() {
+  const [myPet, setMyPet] = useSessionStorage({
+    key: 'my-pet',
+    initialValue: 'Egg',
+    fallbackValue: 'Egg',
+    storageToStateFn: (data) => {
+      const isValidStorageData = typeof data?.id === 'number' && typeof data?.name === 'string';
+      if (isValidStorageData) {
+        return data;
+      }
+      return 'Egg';
+    },
+  });
+
+  return (
+    <>
+      <div>Pet: {typeof myPet === 'string' ? myPet : myPet?.name}</div>
+
+      <button onClick={() => setMyPet({ id: 1, name: 'Komodo' })}>Set state</button>
+
+      <button onClick={() => window.location.reload()}>Reload window</button>
+      <button onClick={() => sessionStorage.setItem('my-pet', '123')}>
+        Set sessionStorage data to an invalid value
+      </button>
+      <button onClick={() => sessionStorage.clear()}>Remove data in sessionStorage</button>
+    </>
+  );
+}
+```
+
+</TabItem>
+<TabItem value="TS" label="TS" default>
+
+```tsx
+import { useSessionStorage } from 'react-power-ups';
+
+type Pet = {
+  id: number;
+  name: string;
+};
+
+export function DemoValidation() {
+  const [myPet, setMyPet] = useSessionStorage<Pet, string>({
+    key: 'my-pet',
+    initialValue: 'Egg',
+    fallbackValue: 'Egg',
+    storageToStateFn: (data) => {
+      const isValidStorageData = typeof data?.id === 'number' && typeof data?.name === 'string';
+      if (isValidStorageData) {
+        return data;
+      }
+      return 'Egg';
+    },
+  });
+
+  return (
+    <>
+      <div>Pet: {typeof myPet === 'string' ? myPet : myPet?.name}</div>
+
+      <button onClick={() => setMyPet({ id: 1, name: 'Komodo' })}>Set state</button>
+
+      <button onClick={() => window.location.reload()}>Reload window</button>
+      <button onClick={() => sessionStorage.setItem('my-pet', '123')}>
+        Set sessionStorage data to an invalid value
+      </button>
+      <button onClick={() => sessionStorage.clear()}>Remove data in sessionStorage</button>
+    </>
+  );
+}
+```
+
+</TabItem>
+</Tabs>

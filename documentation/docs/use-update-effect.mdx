@@ -48,7 +48,7 @@ _No return_
 ```jsx
 import { useUpdateEffect } from 'react-power-ups';
 
-function Demo() {
+export function Demo() {
   const [count, setCount] = useState(0);
   const increment = () => setCount((prev) => prev + 1);
 
@@ -76,7 +76,7 @@ function Demo() {
 ```jsx
 import { useUpdateEffect } from 'react-power-ups';
 
-function Demo() {
+export function Demo() {
   const [count, setCount] = useState(0);
   const increment = () => setCount((prev) => prev + 1);
 

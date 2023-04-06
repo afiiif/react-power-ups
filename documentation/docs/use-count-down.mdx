@@ -84,7 +84,7 @@ const [timeLeft, actions] = useCountDown({
 ```jsx
 import { useCountDown } from 'react-power-ups';
 
-function DemoTimer() {
+export function DemoTimer() {
   const [timeLeft, actions] = useCountDown({ defaultDuration: 10_000, interval: 100 });
 
   return (
@@ -108,7 +108,7 @@ function DemoTimer() {
 ```jsx
 import { useCountDown } from 'react-power-ups';
 
-function DemoTimer() {
+export function DemoTimer() {
   const [timeLeft, actions] = useCountDown({ defaultDuration: 10_000, interval: 100 });
 
   return (
@@ -141,7 +141,7 @@ function DemoTimer() {
 ```jsx
 import { useCountDown } from 'react-power-ups';
 
-function DemoOTP() {
+export function DemoOTP() {
   const [timeLeft, { start }] = useCountDown({ defaultDuration: 10_000, startOnMount: true });
 
   const sendOTP = () => {
@@ -169,7 +169,7 @@ function DemoOTP() {
 ```jsx
 import { useCountDown } from 'react-power-ups';
 
-function DemoOTP() {
+export function DemoOTP() {
   const [timeLeft, { start }] = useCountDown({ defaultDuration: 10_000, startOnMount: true });
 
   const sendOTP = () => {

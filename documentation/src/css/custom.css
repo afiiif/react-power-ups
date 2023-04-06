@@ -121,4 +121,22 @@ hr.custom-hr {
   .btn {
     @apply px-4 py-2 bg-slate-500 text-white border-none rounded-lg text-base disabled:bg-slate-500/40;
   }
+
+  .input {
+    @apply px-4 py-2 rounded-lg border border-solid text-base;
+  }
+
+  .bundle-size {
+    @apply pl-0 mb-0 grid gap-x-8 text-sm;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  }
+  .bundle-size > li {
+    @apply !mt-0 flex gap-2.5;
+  }
+  .bundle-size > li > span {
+    @apply text-green-600 font-semibold;
+  }
+  .bundle-size > li > span > span {
+    @apply ml-px text-[--ifm-color-emphasis-600] font-normal;
+  }
 }

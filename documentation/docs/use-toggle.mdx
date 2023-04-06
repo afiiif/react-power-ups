@@ -51,7 +51,7 @@ const [state, toggleState] = useToggle(initialValue);
 ```jsx
 import { useToggle } from 'react-power-ups';
 
-function DemoPassword() {
+export function DemoPassword() {
   const [isShowPassword, toggleShowPassword] = useToggle(true);
 
   return (
@@ -75,7 +75,7 @@ function DemoPassword() {
 ```jsx
 import { useToggle } from 'react-power-ups';
 
-function DemoPassword() {
+export function DemoPassword() {
   const [isShowPassword, toggleShowPassword] = useToggle(true);
 
   return (
@@ -108,7 +108,7 @@ function DemoPassword() {
 ```jsx
 import { useToggle } from 'react-power-ups';
 
-function DemoModal() {
+export function DemoModal() {
   const [isOpen, toggleModal] = useToggle();
 
   return (
@@ -132,7 +132,7 @@ function DemoModal() {
 ```jsx
 import { useToggle } from 'react-power-ups';
 
-function DemoModal() {
+export function DemoModal() {
   const [isOpen, toggleModal] = useToggle();
 
   return (

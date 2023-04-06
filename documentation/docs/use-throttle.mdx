@@ -1,0 +1,124 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import Param from '@site/src/components/param';
+import BrowserWindow from '@site/src/components/browser-window';
+
+import { DemoDebounce, DemoThrottle } from '@site/src/examples/use-debounce-throttle';
+
+# useThrottle
+
+Get throttled value.
+
+<hr className="custom-hr" />
+
+## API
+
+```js
+const throttledValue = useThrottle(value, delay, callbackFn);
+```
+
+### Options
+
+- <Param name="value" type="any" isRequired />
+
+  - The value to be throttled
+
+- <Param name="delay" type="number" isRequired />
+
+  - Delay in miliseconds
+
+- <Param name="callbackFn" type="(value: any) => void" isRequired={false} />
+
+  - Callback function after throttled
+
+### Returns
+
+- <Param name="throttledValue" type="any" />
+
+  - The throttled value
+
+<hr className="custom-hr" />
+
+## Examples
+
+<BrowserWindow>
+  <DemoThrottle />
+  <div className="h-4" />
+  <DemoDebounce />
+</BrowserWindow>
+
+<Tabs>
+<TabItem value="JS" label="JS">
+
+```jsx
+import { useState } from 'react';
+import { useThrottle, useDebounce } from 'react-power-ups';
+
+export function DemoThrottle() {
+  const [keyword, setKeyword] = useState('');
+  const throttledKeyword = useThrottle(keyword, 1000);
+
+  return (
+    <>
+      <h3>Throttle 1 second</h3>
+      <input type="text" value={keyword} onChange={(e) => setKeyword(e.target.value)} />
+      <div>Keyword: {keyword}</div>
+      <div>Throttled keyword: {throttledKeyword}</div>
+    </>
+  );
+}
+
+export function DemoDebounce() {
+  const [keyword, setKeyword] = useState('');
+  const debouncedKeyword = useDebounce(keyword, 1000);
+
+  return (
+    <>
+      <h3>Debounce 1 second</h3>
+      <input type="text" value={keyword} onChange={(e) => setKeyword(e.target.value)} />
+      <div>Keyword: {keyword}</div>
+      <div>Debounced keyword: {debouncedKeyword}</div>
+    </>
+  );
+}
+```
+
+</TabItem>
+<TabItem value="TS" label="TS" default>
+
+```jsx
+import { useState } from 'react';
+import { useThrottle, useDebounce } from 'react-power-ups';
+
+export function DemoThrottle() {
+  const [keyword, setKeyword] = useState('');
+  const throttledKeyword = useThrottle(keyword, 1000);
+
+  return (
+    <>
+      <h3>Throttle 1 second</h3>
+      <input type="text" value={keyword} onChange={(e) => setKeyword(e.target.value)} />
+      <div>Keyword: {keyword}</div>
+      <div>Throttled keyword: {throttledKeyword}</div>
+    </>
+  );
+}
+
+export function DemoDebounce() {
+  const [keyword, setKeyword] = useState('');
+  const debouncedKeyword = useDebounce(keyword, 1000);
+
+  return (
+    <>
+      <h3>Debounce 1 second</h3>
+      <input type="text" value={keyword} onChange={(e) => setKeyword(e.target.value)} />
+      <div>Keyword: {keyword}</div>
+      <div>Debounced keyword: {debouncedKeyword}</div>
+    </>
+  );
+}
+```
+
+</TabItem>
+</Tabs>

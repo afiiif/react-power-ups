@@ -108,7 +108,7 @@ const [ref, isInView] = useInView(initialIsInView, {
 ```jsx
 import { useInView } from 'react-power-ups';
 
-function Demo() {
+export function Demo() {
   const [ref, isInView] = useInView(false, {
     onEnter: () => console.log('Element appeared in page'),
     onLeave: () => console.log('Element dissappeared from page'),
@@ -138,7 +138,7 @@ function Demo() {
 ```jsx
 import { useInView } from 'react-power-ups';
 
-function Demo() {
+export function Demo() {
   const [ref, isInView] = useInView(false, {
     onEnter: () => console.log('Element appeared in page'),
     onLeave: () => console.log('Element dissappeared from page'),
