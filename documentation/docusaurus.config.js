@@ -11,7 +11,7 @@ const config = {
   favicon: 'https://em-content.zobj.net/thumbs/240/whatsapp/326/glowing-star_1f31f.png',
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://afiiif.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/react-power-ups/',
@@ -55,7 +55,8 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/react-power-ups-social-card.png',
+      metadata: [{ name: 'keywords', content: 'react, hooks, power-ups, utilities' }],
       navbar: {
         title: 'React Power-Ups',
         logo: {
