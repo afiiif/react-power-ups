@@ -48,16 +48,18 @@ describe('useSessionStorage', () => {
   });
 
   it('should transform the session storage value using the provided function', () => {
-    sessionStorage.setItem('myKey', JSON.stringify({ value: 'myValue' }));
+    sessionStorage.setItem('myKey', JSON.stringify({ value: 'myValue', expiredAt: 1681774660995 }));
 
     const { result } = renderHook(() =>
-      useSessionStorage<{ value: string }, string>({
+      useSessionStorage<{ value: string; expiredAt: number }>({
         key: 'myKey',
-        storageToStateFn: (data) => data.value,
-        fallbackValue: 'fallbackValue',
+        storageToStateFn: (data) => {
+          if (data.expiredAt > Date.now()) return data;
+          return { value: 'otherValue', expiredAt: 0 };
+        },
       }),
     );
 
-    expect(result.current[0]).toEqual('myValue');
+    expect(result.current[0]).toEqual({ value: 'otherValue', expiredAt: 0 });
   });
 });

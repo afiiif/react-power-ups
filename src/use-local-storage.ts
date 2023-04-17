@@ -5,11 +5,11 @@ import useUpdateEffect from './use-update-effect';
 import useWindowEvent from './use-window-event';
 import { identityFn } from './utils';
 
-type Options<TData, TFallback = TData> = {
+type Options<TData> = {
   key: string;
-  initialValue?: TData | TFallback | null;
-  fallbackValue?: TData | TFallback | null;
-  storageToStateFn?: (data: TData) => TData | TFallback | null;
+  initialValue?: TData | null;
+  fallbackValue?: TData | null;
+  storageToStateFn?: (data: TData) => TData | null;
 };
 
 /**
@@ -28,12 +28,12 @@ type Options<TData, TFallback = TData> = {
  * @param options.storageToStateFn Function to determine how local storage data transformed to a state.
  * Default to `(data) => data`. You can add validation here, example `(data) => data.isExpired ? null : data`
  */
-export default function useLocalStorage<TData, TFallback = TData>(
-  options: Options<TData, TFallback>,
-): [TData | TFallback | null, Dispatch<SetStateAction<TData | TFallback | null>>] {
+export default function useLocalStorage<TData>(
+  options: Options<TData>,
+): [TData | null, Dispatch<SetStateAction<TData | null>>] {
   const { key, initialValue = null, fallbackValue = null, storageToStateFn = identityFn } = options;
 
-  const [value, setValue] = useState<TData | TFallback | null>(initialValue);
+  const [value, setValue] = useState<TData | null>(initialValue);
 
   useIsomorphicLayoutEffect(() => {
     const storageData = localStorage.getItem(key);
