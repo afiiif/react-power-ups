@@ -36,35 +36,33 @@ export function DemoSimple_() {
 
 export const DemoSimple = memo(DemoSimple_);
 
-type Pet = {
-  id: number;
-  name: string;
+type StorageData = {
+  value: number;
+  expiredAt: number;
 };
 
 export function DemoAdvanced_() {
-  const [myPet, setMyPet] = useLocalStorage<Pet, string>({
-    key: 'my-pet',
-    initialValue: 'Egg',
-    fallbackValue: 'Egg',
-    storageToStateFn: (data) => {
-      const isValidStorageData = typeof data?.id === 'number' && typeof data?.name === 'string';
-      if (isValidStorageData) {
-        return data;
-      }
-      return 'Egg';
+  const [data, setData] = useLocalStorage<StorageData>({
+    key: 'my-counter-with-expiration',
+    initialValue: { value: 1, expiredAt: Date.now() + 30 * 1000 },
+    fallbackValue: { value: 1, expiredAt: Date.now() + 30 * 1000 },
+    storageToStateFn: (data, { fallbackValue }) => {
+      if (data.expiredAt > Date.now()) return data;
+      return fallbackValue;
     },
   });
 
   return (
     <>
-      <div>Pet: {typeof myPet === 'string' ? myPet : myPet?.name}</div>
+      <div>Count: {data.value}</div>
+      <div>Will expires in {Math.ceil((data.expiredAt - Date.now()) / 1000)}s</div>
 
       <div className="pt-2 pb-6">
         <button
           className="btn bg-[--ifm-color-success-light]"
-          onClick={() => setMyPet({ id: 1, name: 'Komodo' })}
+          onClick={() => setData((prev) => ({ ...prev, value: prev.value + 1 }))}
         >
-          Set state
+          Increment
         </button>
       </div>
 
@@ -72,11 +70,14 @@ export function DemoAdvanced_() {
         <button className="btn" onClick={() => window.location.reload()}>
           Reload window
         </button>
-        <button className="btn" onClick={() => localStorage.setItem('my-pet', '123')}>
+        <button
+          className="btn"
+          onClick={() => localStorage.setItem('my-counter-with-expiration', '123')}
+        >
           Set localStorage data to an invalid value
         </button>
         <button className="btn" onClick={() => localStorage.clear()}>
-          Remove data in localStorage
+          Clear localStorage
         </button>
       </div>
     </>
