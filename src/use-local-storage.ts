@@ -9,7 +9,10 @@ type Options<TData> = {
   key: string;
   initialValue?: TData | null;
   fallbackValue?: TData | null;
-  storageToStateFn?: (data: TData) => TData | null;
+  storageToStateFn?: (
+    data: TData,
+    alternativeValue: { initialValue: TData | null; fallbackValue: TData | null },
+  ) => TData | null;
 };
 
 /**
@@ -26,7 +29,7 @@ type Options<TData> = {
  * @param options.initialValue Initial value of the state.
  * @param options.fallbackValue Fallback value when error parsing the value or null. Default to null.
  * @param options.storageToStateFn Function to determine how local storage data transformed to a state.
- * Default to `(data) => data`. You can add validation here, example `(data) => data.isExpired ? null : data`
+ * Default to `(data) => data`. You can add validation here, example `(data) => isExpired ? null : data`
  */
 export default function useLocalStorage<TData>(
   options: Options<TData>,
@@ -43,7 +46,7 @@ export default function useLocalStorage<TData>(
     }
     try {
       const parsedValue = JSON.parse(storageData) as TData;
-      const nextValue = storageToStateFn(parsedValue);
+      const nextValue = storageToStateFn(parsedValue, { initialValue, fallbackValue });
       setValue(nextValue);
     } catch {
       setValue(fallbackValue);
@@ -60,7 +63,7 @@ export default function useLocalStorage<TData>(
     }
     try {
       const parsedValue = JSON.parse(evt.newValue) as TData;
-      const nextValue = storageToStateFn(parsedValue);
+      const nextValue = storageToStateFn(parsedValue, { initialValue, fallbackValue });
       setValue(nextValue);
     } catch {
       setValue(fallbackValue);
