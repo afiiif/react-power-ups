@@ -55,7 +55,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/react-power-ups-social-card.png',
+      image: 'img/react-power-ups-social-card.jpg',
       metadata: [{ name: 'keywords', content: 'react, hooks, power-ups, utilities' }],
       navbar: {
         title: 'React Power-Ups',
