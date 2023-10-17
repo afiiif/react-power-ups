@@ -20,7 +20,7 @@ const throttledFn = useThrottleFn(fn, delay);
 
 ### Options
 
-- <Param name="fn" type="Function" isRequired />
+- <Param name="fn" type="Function (T)" isRequired />
 
   - The function to be throttled
 
@@ -30,7 +30,7 @@ const throttledFn = useThrottleFn(fn, delay);
 
 ### Returns
 
-- <Param name="throttledFn" type="Function" />
+- <Param name="throttledFn" type="T (generic)" />
 
   - The throttled function
 

@@ -31,19 +31,19 @@ const [state, setState] = useSessionStorage({
 
   - The sessionStorage key
 
-- <Param name="initialValue" type="any" isRequired={false} />
+- <Param name="initialValue" type="any (T)" isRequired={false} />
 
   - Defaults to `null`
   - The initial value of the state
 
-- <Param name="fallbackValue" type="any" isRequired={false} />
+- <Param name="fallbackValue" type="any (T)" isRequired={false} />
 
   - Defaults to `null`
   - Will be used if there is no data stored in the sessionStorage (with the specified key)
 
 - <Param
     name="storageToStateFn"
-    type="(state: any, { initialValue, fallbackValue }) => any"
+    type="(state: T, { initialValue, fallbackValue }) => any"
     isRequired={false}
   />
 
@@ -52,7 +52,7 @@ const [state, setState] = useSessionStorage({
 
 ### Returns
 
-- <Param name="state" type="any" />
+- <Param name="state" type="T (generic)" />
 
   - Just like `useState`
 

@@ -20,7 +20,7 @@ const debouncedFn = useDebounceFn(fn, delay);
 
 ### Options
 
-- <Param name="fn" type="Function" isRequired />
+- <Param name="fn" type="Function (T)" isRequired />
 
   - The function to be debounced
 
@@ -30,7 +30,7 @@ const debouncedFn = useDebounceFn(fn, delay);
 
 ### Returns
 
-- <Param name="debouncedFn" type="Function" />
+- <Param name="debouncedFn" type="T (generic)" />
 
   - The debounced function
 

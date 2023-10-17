@@ -20,7 +20,7 @@ const throttledValue = useThrottle(value, delay, callbackFn);
 
 ### Options
 
-- <Param name="value" type="any" isRequired />
+- <Param name="value" type="any (T)" isRequired />
 
   - The value to be throttled
 
@@ -28,13 +28,13 @@ const throttledValue = useThrottle(value, delay, callbackFn);
 
   - Delay in miliseconds
 
-- <Param name="callbackFn" type="(value: any) => void" isRequired={false} />
+- <Param name="callbackFn" type="(value: T) => void" isRequired={false} />
 
   - Callback function after throttled
 
 ### Returns
 
-- <Param name="throttledValue" type="any" />
+- <Param name="throttledValue" type="T (generic)" />
 
   - The throttled value
 

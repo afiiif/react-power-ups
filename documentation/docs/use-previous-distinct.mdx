@@ -20,18 +20,18 @@ const prevState = usePreviousDistinct(state, compareFn);
 
 ### Options
 
-- <Param name="state" type="any" isRequired />
+- <Param name="state" type="any (T)" isRequired />
 
   - The state (or prop) value
 
-- <Param name="compareFn" type="(prev: any, next: any) => boolean" isRequired={false} />
+- <Param name="compareFn" type="(prev: T, next: T) => boolean" isRequired={false} />
 
   - Defaults to strict equal `(prev, next) => prev === next`
   - The function to compare the previous and next value
 
 ### Returns
 
-- <Param name="prevState" type="any" />
+- <Param name="prevState" type="T (generic)" />
 
   - The previous value of the state (or prop) based on the comparation with current value
   - Will not affected by re-render
