@@ -104,7 +104,7 @@ export function DemoSimple() {
 import { useLocalStorage } from 'react-power-ups';
 
 export function DemoSimple() {
-  const [counter, setCounter] = useLocalStorage<number, number>({
+  const [counter, setCounter] = useLocalStorage<number>({
     key: 'my-counter',
     initialValue: 0,
     fallbackValue: 0,
