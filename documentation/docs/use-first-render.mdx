@@ -4,9 +4,9 @@ import TabItem from '@theme/TabItem';
 import Param from '@site/src/components/param';
 import BrowserWindow from '@site/src/components/browser-window';
 
-import { Demo } from '@site/src/examples/use-first-mount';
+import { Demo } from '@site/src/examples/use-first-render';
 
-# useFirstMount
+# useFirstRender
 
 Check if component is just mounted (on first render).
 
@@ -15,7 +15,7 @@ Check if component is just mounted (on first render).
 ## API
 
 ```js
-const isFirst = useFirstMount();
+const isFirstRender = useFirstRender();
 ```
 
 ### Options
@@ -24,7 +24,7 @@ _No need any option_
 
 ### Returns
 
-- <Param name="isFirst" type="boolean" />
+- <Param name="isFirstRender" type="boolean" />
 
   - Value will be `true` if component is just mounted, and `false` otherwise
 
@@ -41,20 +41,20 @@ _No need any option_
 
 ```jsx
 import { useState } from 'react';
-import { useFirstMount } from 'react-power-ups';
+import { useFirstRender } from 'react-power-ups';
 
 export function Demo() {
   const [count, setCount] = useState(0);
   const increment = () => setCount((prev) => prev + 1);
 
-  const isFirst = useFirstMount();
+  const isFirstRender = useFirstRender();
 
   return (
     <>
       <span>Count: {count}</span>
       <button onClick={increment}>Increment (trigger re-render)</button>
 
-      <div>First render? {isFirst ? 'Yes' : 'No'}</div>
+      <div>First render? {isFirstRender ? 'Yes' : 'No'}</div>
     </>
   );
 }
@@ -65,20 +65,20 @@ export function Demo() {
 
 ```jsx
 import { useState } from 'react';
-import { useFirstMount } from 'react-power-ups';
+import { useFirstRender } from 'react-power-ups';
 
 export function Demo() {
   const [count, setCount] = useState(0);
   const increment = () => setCount((prev) => prev + 1);
 
-  const isFirst = useFirstMount();
+  const isFirstRender = useFirstRender();
 
   return (
     <>
       <span>Count: {count}</span>
       <button onClick={increment}>Increment (trigger re-render)</button>
 
-      <div>First render? {isFirst ? 'Yes' : 'No'}</div>
+      <div>First render? {isFirstRender ? 'Yes' : 'No'}</div>
     </>
   );
 }

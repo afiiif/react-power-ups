@@ -1,12 +1,12 @@
 import React, { memo } from 'react';
 import { useState } from 'react';
-import { useFirstMount } from 'react-power-ups';
+import { useFirstRender } from 'react-power-ups';
 
 export function Demo_() {
   const [count, setCount] = useState(0);
   const increment = () => setCount((prev) => prev + 1);
 
-  const isFirst = useFirstMount();
+  const isFirst = useFirstRender();
 
   return (
     <>

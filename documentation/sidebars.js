@@ -19,7 +19,7 @@ const sidebars = {
     { type: 'html', value: 'State 🚥', className: 'custom-sidebar-category' },
     { type: 'doc', id: 'use-toggle', className: 'custom-sidebar-sub-item' },
     { type: 'doc', id: 'use-count-down', className: 'custom-sidebar-sub-item' },
-    { type: 'doc', id: 'use-first-mount', className: 'custom-sidebar-sub-item' },
+    { type: 'doc', id: 'use-first-render', className: 'custom-sidebar-sub-item' },
     { type: 'doc', id: 'use-previous', className: 'custom-sidebar-sub-item' },
     { type: 'doc', id: 'use-previous-distinct', className: 'custom-sidebar-sub-item' },
     { type: 'doc', id: 'use-update-effect', className: 'custom-sidebar-sub-item' },
