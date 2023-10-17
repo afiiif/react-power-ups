@@ -3,13 +3,13 @@ import { renderHook } from '@testing-library/react-hooks';
 import { useUpdateEffect } from '../src';
 
 describe('useUpdateEffect', () => {
-  it('should not execute the effect on the first mount', () => {
+  it('should not execute the effect on the first render', () => {
     const effectMock = jest.fn();
     renderHook(() => useUpdateEffect(effectMock));
     expect(effectMock).not.toHaveBeenCalled();
   });
 
-  it('should execute the effect after the first mount', () => {
+  it('should execute the effect after the first render', () => {
     const effectMock = jest.fn();
     const { rerender } = renderHook(({ count }) => useUpdateEffect(effectMock, [count]), {
       initialProps: { count: 0 },

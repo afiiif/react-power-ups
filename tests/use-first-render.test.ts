@@ -1,15 +1,15 @@
 import { renderHook } from '@testing-library/react-hooks';
 
-import { useFirstMount } from '../src';
+import { useFirstRender } from '../src';
 
-describe('useFirstMount', () => {
+describe('useFirstRender', () => {
   it('returns true on first render', () => {
-    const { result } = renderHook(() => useFirstMount());
+    const { result } = renderHook(() => useFirstRender());
     expect(result.current).toBe(true);
   });
 
   it('returns false on subsequent renders', () => {
-    const { result, rerender } = renderHook(() => useFirstMount());
+    const { result, rerender } = renderHook(() => useFirstRender());
     expect(result.current).toBe(true);
     rerender();
     expect(result.current).toBe(false);

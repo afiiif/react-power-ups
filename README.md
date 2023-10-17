@@ -29,7 +29,7 @@ yarn add react-power-ups
   Start, pause, resume, and reset a countdown timer.  
   <sup>💡 Common use case: display a countdown timer, limit certain action within a time frame like resend OTP</sup>
 
-- [`useFirstMount`](./src/use-first-mount.ts) [![][img-demo]](https://afiiif.github.io/react-power-ups/docs/use-first-mount#examples)  
+- [`useFirstRender`](./src/use-first-render.ts) [![][img-demo]](https://afiiif.github.io/react-power-ups/docs/use-first-mount#examples)  
   Check if component is just mounted (on first render).  
   <sup>💡 Common use case: do something only on first render or vice versa</sup>
 

@@ -1,9 +1,9 @@
 import { DependencyList, EffectCallback, useEffect } from 'react';
 
-import useFirstMount from './use-first-mount';
+import useFirstRender from './use-first-render';
 
 /**
- * Like `useEffect` hook, but skip on first mount.
+ * Like `useEffect` hook, but skip on first render.
  *
  * •
  *
@@ -11,10 +11,10 @@ import useFirstMount from './use-first-mount';
  * @param {Array} deps Dependency array.
  */
 export default function useUpdateEffect(effect: EffectCallback, deps?: DependencyList) {
-  const isFirstMount = useFirstMount();
+  const isFirstRender = useFirstRender();
 
   useEffect(() => {
-    if (!isFirstMount) {
+    if (!isFirstRender) {
       return effect();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
