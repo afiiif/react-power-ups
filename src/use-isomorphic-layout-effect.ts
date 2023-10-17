@@ -14,6 +14,4 @@ import { isBrowser } from './utils';
  * If you’re migrating code from a class component, `useLayoutEffect` fires in the same phase as
  * `componentDidMount` and `componentDidUpdate`.
  */
-const useIsomorphicLayoutEffect = isBrowser ? useLayoutEffect : useEffect;
-
-export default useIsomorphicLayoutEffect;
+export const useIsomorphicLayoutEffect = isBrowser ? useLayoutEffect : useEffect;

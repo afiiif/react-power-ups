@@ -7,7 +7,7 @@ import { useEffect, useRef } from 'react';
  *
  * @param state State (or prop).
  */
-export default function usePrevious<T>(state: T) {
+export function usePrevious<T>(state: T) {
   const ref = useRef<T>();
 
   useEffect(() => {

@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 
-import useIsomorphicLayoutEffect from './use-isomorphic-layout-effect';
-import useUpdateEffect from './use-update-effect';
-import useWindowEvent from './use-window-event';
+import { useIsomorphicLayoutEffect } from './use-isomorphic-layout-effect';
+import { useUpdateEffect } from './use-update-effect';
+import { useWindowEvent } from './use-window-event';
 import { identityFn } from './utils';
 
 type Options<TData> = {
@@ -31,7 +31,7 @@ type Options<TData> = {
  * @param options.storageToStateFn Function to determine how local storage data transformed to a state.
  * Default to `(data) => data`. You can add validation here, example `(data) => isExpired ? null : data`
  */
-export default function useLocalStorage<TData>(
+export function useLocalStorage<TData>(
   options: Options<TData>,
 ): [TData | null, Dispatch<SetStateAction<TData | null>>] {
   const { key, initialValue = null, fallbackValue = null, storageToStateFn = identityFn } = options;

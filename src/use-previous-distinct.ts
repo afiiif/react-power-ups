@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-import useFirstRender from './use-first-render';
+import { useFirstRender } from './use-first-render';
 import { CompareFunction, strictEquals } from './utils';
 
 /**
@@ -11,10 +11,7 @@ import { CompareFunction, strictEquals } from './utils';
  * @param state State (or prop).
  * @param compareFn Function to compare current value with previous value (default strict equal).
  */
-export default function usePreviousDistinct<T>(
-  state: T,
-  compareFn: CompareFunction<T> = strictEquals,
-) {
+export function usePreviousDistinct<T>(state: T, compareFn: CompareFunction<T> = strictEquals) {
   const prevRef = useRef<T>();
   const curRef = useRef<T>(state);
   const isFirstRender = useFirstRender();

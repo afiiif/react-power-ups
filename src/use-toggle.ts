@@ -10,6 +10,6 @@ const toggleReducer = (state: boolean, nextValue?: any) =>
  *
  * @param {boolean} [initialValue=false] Initial state (default `false`).
  */
-export default function useToggle(initialValue = false): [boolean, (nextValue?: any) => void] {
+export function useToggle(initialValue = false): [boolean, (nextValue?: any) => void] {
   return useReducer(toggleReducer, initialValue);
 }

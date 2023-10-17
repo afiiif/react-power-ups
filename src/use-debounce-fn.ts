@@ -8,7 +8,7 @@ import { useCallback, useEffect, useRef } from 'react';
  * @param {Function} fn Function to be debounced.
  * @param {number} delay Delay in milliseconds.
  */
-export default function useDebounceFn<T extends unknown[]>(
+export function useDebounceFn<T extends unknown[]>(
   fn: (...params: T) => void,
   delay: number,
 ): [(...params: T) => void, () => void] {

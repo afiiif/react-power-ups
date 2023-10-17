@@ -107,7 +107,7 @@ export type Actions = {
  * @param {number} [options.interval=1000] Interval in milliseconds (default 1s).
  * @param {boolean} [options.startOnMount=false] Start on mount (default `false`).
  */
-export default function useCountDown({
+export function useCountDown({
   defaultDuration = 60 * 1000,
   interval = 1000,
   startOnMount = false,

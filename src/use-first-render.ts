@@ -5,7 +5,7 @@ import { useRef } from 'react';
  *
  * Returns `true` if component is just mounted and `false` otherwise.
  */
-export default function useFirstRender() {
+export function useFirstRender() {
   const isFirst = useRef(true);
 
   if (isFirst.current) {

@@ -8,7 +8,7 @@ import { useEffect, useRef } from 'react';
  * @param {string} eventType Window event type (e.g. 'click', 'keyup').
  * @param {Function} handler Handler function.
  */
-export default function useWindowEvent<T extends keyof WindowEventMap>(
+export function useWindowEvent<T extends keyof WindowEventMap>(
   eventType: T,
   handler: (ev: WindowEventMap[T]) => any,
 ) {

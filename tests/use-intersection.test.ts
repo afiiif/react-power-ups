@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks';
 
-import useIntersection, { Props } from '../src/use-intersection';
+import { useIntersection, UseIntersectionProps as Props } from '../src';
 
 describe('useIntersection', () => {
   it('should return a ref', () => {

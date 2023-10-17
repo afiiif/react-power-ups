@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-import useUpdateEffect from './use-update-effect';
+import { useUpdateEffect } from './use-update-effect';
 import { noop } from './utils';
 
 /**
@@ -12,11 +12,7 @@ import { noop } from './utils';
  * @param {number} delay Delay in milliseconds.
  * @param {Function} callbackFn Callback function after throttled.
  */
-export default function useThrottle<T>(
-  value: T,
-  delay: number,
-  callbackFn: (value: T) => void = noop,
-): T {
+export function useThrottle<T>(value: T, delay: number, callbackFn: (value: T) => void = noop): T {
   const [throttledValue, setThrottledValue] = useState(value);
 
   const timeout = useRef<NodeJS.Timeout>();

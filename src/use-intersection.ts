@@ -23,7 +23,7 @@ export type Props = IntersectionObserverInit & {
  * @param {Function} options.onLeave Callback fired on leave.
  * @param {boolean} [options.enabled=true] Enable intersection observer (default `true`).
  */
-export default function useIntersection<T extends Element = HTMLDivElement>({
+export function useIntersection<T extends Element = HTMLDivElement>({
   onIntersect = noop,
   onEnter = noop,
   onLeave = noop,
